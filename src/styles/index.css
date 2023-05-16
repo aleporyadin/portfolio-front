@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:wght@300;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@layer base {
+    body {
+        @apply text-lg font-barlow text-black-20;
+    }
+}
+
+.basis-70 {
+    flex-basis: 70%;
+}
+
+.br-8 {
+    border-radius: 8px;
+}
+
+.br-11 {
+    border-radius: 11px;
+}
+
+.bg-green {
+    background: #27ae60;
+}
+
+.h-16px {
+    height: 16px;
+}
+
+.w-16px {
+    width: 16px;
+}
+
+.bg-yellow {
+    background: #f2c94c;
+}
+
+.fz-12-lh-14 {
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.fz-11-lh-13 {
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.text-gray {
+    color: #828282;
+}
+
+.fz-14-lh-16 {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.fz-16-lh-19 {
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.fz-12-lh-14 {
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.fz-12-lh-150 {
+    font-size: 12px;
+    line-height: 150%;
+}
+
+.fz-13-lh-19 {
+    font-size: 13px;
+    line-height: 19px;
+}
+
+.fz-14-lh-17 {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.fz-18-lh-27 {
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.w-17 {
+    width: 4.2rem;
+}
+
+.bg-metadata-container {
+    background: rgba(72, 72, 72, 0.03) !important;
+}
+
+.border-gray {
+    border-color: #828282;
+}
+
+.bg-gray {
+    background-color: #bdbdbd;
+}
+
+.h-7px {
+    height: 7px;
+}
+
+.br-4 {
+    border-radius: 4px;
+}
+
+.bg-light-gray {
+    background: #f7f9fc;
+}
+
+.br-7 {
+    border-radius: 7px;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-45 {
+    width: 45%;
+}
+
+.w-10 {
+    width: 10%;
+}
