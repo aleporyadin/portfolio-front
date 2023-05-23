@@ -27,19 +27,19 @@ export default function Button({
     <button
       data-testid={dataTestid}
       className={cn(buttonStyle, {
-        blue: color === "blue",
+        blue: color === 'blue',
         button: true,
         disabled,
-        full: size === "full",
-        gray: color === "gray",
-        half: size === "half",
-        "light-blue": color === "light-blue",
-        "primary-btn": color === "primary",
-        "secondary-btn": color === "secondary",
-        sm: size === "sm",
+        full: size === 'full',
+        gray: color === 'gray',
+        half: size === 'half',
+        'light-blue': color === 'light-blue',
+        'primary-btn': color === 'primary',
+        'secondary-btn': color === 'secondary',
+        sm: size === 'sm',
         // "custom-font": font === "another",
-        "text-blue": textColor === "blue",
-        "text-gray": textColor === "gray"
+        'text-blue': textColor === 'blue',
+        'text-gray': textColor === 'gray'
       })}
       ref={ref_}
       onClick={responsiveClick ? handleResponsiveClick : handleClick}
@@ -47,13 +47,14 @@ export default function Button({
       type={type}
     >
       {loading ? (
-        "Loading..."
+        'Loading...'
       ) : IconComponent ? (
         <Icon
-          className="ml-2"
+          className='ml-2'
           component={IconComponent}
-          color="#ffffff"
-          style={{ cursor: "pointer", height: "100%", width: "100%" }}/>
+          color='#ffffff'
+          style={{ cursor: 'pointer', height: '100%', width: '100%' }}
+        />
       ) : (
         name
       )}
@@ -62,12 +63,12 @@ export default function Button({
 }
 
 Button.defaultProps = {
-  dataTestid: "",
+  dataTestid: '',
   disabled: false,
   handleClick: () => {},
   loading: false,
-  size: "",
-  type: "button"
+  size: '',
+  type: 'button'
 };
 
 Button.propTypes = {

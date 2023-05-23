@@ -1,7 +1,4 @@
 import axios from "axios";
-import CryptoJS from "crypto-js";
-import { getLocalItem } from "./localStorage";
-import { endpoints } from "../api/endpoints";
 
 // axios.defaults.baseURL = endpoints.baseURL; // api base url
 // axios.interceptors.request.use(

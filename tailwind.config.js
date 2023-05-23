@@ -80,9 +80,9 @@ module.exports = {
       xl7: ["45px", "50px"],
       xl8: ["50px", "25px"],
       xs: ["10px", "12px"]
-    }
+    },
   },
   variants: {
     extend: {}
-  }
+  },
 };

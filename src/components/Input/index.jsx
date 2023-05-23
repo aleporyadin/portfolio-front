@@ -64,8 +64,7 @@ Input.defaultProps = {
   maxLength: 50,
   minLength: 1,
   name: "",
-  onChange: () => {
-  },
+  onChange: () => {},
   pattern: null,
   placeholder: null,
   required: false,

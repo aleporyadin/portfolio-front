@@ -9,18 +9,19 @@ export default function Header({ back }) {
   return (
     <div className="header flex help justify-between mt-8 items-center mx-8">
       <div className="flex items-center">
-        {back ?
+        {back ? (
           <span
             role="button"
             tabIndex="0"
             onClick={() => {
               navigate(-1);
             }}
-            className="flex items-center cursor-pointer">
-            <BackArrow/>
+            className="flex items-center cursor-pointer"
+          >
+            <BackArrow />
             <span className="text-gray-20">Back</span>
           </span>
-          : null}{" "}
+        ) : null}{" "}
       </div>
     </div>
   );

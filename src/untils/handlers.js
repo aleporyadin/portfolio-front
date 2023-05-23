@@ -5,18 +5,18 @@
 // import userServices from "../../api/userServices";
 // import { INCLUDE_TYPE_BY_LIST_TYPE } from "utils/transactionConstants/transaction";
 
-// const handlerLoadMoreReceiverPlatform = async ({name, page, size}) => {
+// const handlerLoadMoreReceiverPlatform = async ({name, pages, size}) => {
 //   return constructPlatformData(await platformsServices.getAllPlatforms({
 //     name,
-//     page: page,
+//     pages: pages,
 //     size: size
 //   }));
 // };
 
-// const handlerLoadMoreSenderPlatform = async ({name, page, size}) => {
+// const handlerLoadMoreSenderPlatform = async ({name, pages, size}) => {
 //   return constructPlatformData(await platformsServices.getPlatforms({
 //     name,
-//     page: page,
+//     pages: pages,
 //     size: size
 //   }));
 // };
