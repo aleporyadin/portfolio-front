@@ -7,9 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
 
-  const [isAdmin, setIsUser] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isModerator, setIsModerator] = useState(false);
-  const [isUser, setIsAdmin] = useState(false);
+  const [isUser, setIsUser] = useState(false);
 
   const contextValue = useMemo(
     () => ({

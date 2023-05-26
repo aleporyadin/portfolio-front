@@ -1,0 +1,65 @@
+.layout {
+  height: calc(100vh - 44px);
+  display: grid;
+  grid-template-columns: 460px auto;
+  grid-template-rows: max-content max-content max-content 1fr max-content 1fr max-content;
+  gap: 12px;
+}
+
+.transaction-list-main {
+  @apply bg-white;
+  grid-row: span 5;
+  grid-column: 1;
+  grid-row-gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: min-content min-content auto auto 1fr;
+  border-radius: 16px;
+  min-height: 400px;
+  max-height: 100vh;
+  border: 1px solid theme("colors.secondary.20");
+  color: $black-color;
+  padding: 8px 5px 0 20px;
+}
+
+.transaction-main-meta {
+  @apply bg-white;
+  overflow: auto;
+  grid-column: 2;
+  grid-row: span 2;
+  border-radius: 16px;
+  padding: 8px 5px 20px 20px;
+}
+
+.transaction-main-products {
+  @apply bg-white;
+  grid-column: 2;
+  grid-row: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content 1fr;
+  gap: 12px;
+  border-radius: 16px;
+  padding: 8px 5px 20px 20px;
+  border: 1px solid theme("colors.secondary.20");
+}
+
+.transaction-main-meta-header,
+.transaction-main-products-header {
+  grid-column: 1/3;
+  border-bottom: 1px solid theme("colors.secondary.20");
+}
+
+.transaction-meta-data-header-container,
+.transaction-product-table-header-container,
+.transaction-item-header-container {
+  display: flex;
+  grid-row: 1;
+  grid-column: 1/4;
+  border-bottom: 2px $gray-color solid;
+  text-decoration: none;
+  color: grey;
+  font-size: 20px;
+  transition: 0.2s;
+  position: relative;
+}

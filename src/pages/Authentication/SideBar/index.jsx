@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as DottedRectangle } from "../../../assets/dotted-rectangle.svg";
 import { ReactComponent as DottedSquare } from "../../../assets/dotted-square.svg";
 import { ReactComponent as DoubleCircle } from "../../../assets/double-circle.svg";
-import { ReactComponent as Logo } from "../../../assets/h.svg";
+import { ReactComponent as Logo } from "../../../assets/logo.svg";
 import "./index.scss";
 
 export default function SideBar() {

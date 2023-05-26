@@ -1,0 +1,16 @@
+.home-screen {
+  @apply bg-gray-10;
+  @apply text-black-10;
+  height: 100vh;
+  padding: 24px;
+}
+
+.layout-home {
+  display: flex;
+  gap: 12px;
+}
+
+.content-container {
+  flex-grow: 1;
+  height: calc(100vh - 44px);
+}

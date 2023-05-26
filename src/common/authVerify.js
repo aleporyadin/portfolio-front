@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import SessionStorage from "../utils/SessionStorage";
 import { withRouter } from "./with-router";
 
 const parseJwt = (token) => {
@@ -13,10 +14,10 @@ const AuthVerify = (props) => {
   let location = props.router.location;
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(SessionStorage.getSessionItem("user"));
 
     if (user) {
-      const decodedJwt = parseJwt(user.accessToken);
+      const decodedJwt = parseJwt(user.token);
 
       if (decodedJwt.exp * 1000 < Date.now()) {
         props.logOut();

@@ -1,7 +1,7 @@
 module.exports = {
   darkMode: false,
   plugins: [], // or 'media' or 'class'
-  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
     colors: {
       black: {

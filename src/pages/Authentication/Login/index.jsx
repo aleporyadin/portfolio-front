@@ -1,12 +1,13 @@
 import { ArrowForwardIosRounded as ArrowForwardIcon } from "@mui/icons-material";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthService from "../../../api/AuthService";
+import AuthService from "../../../api/authService";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import AuthContext from "../../../context/AuthContext";
 import { Pathname } from "../../../routes";
-import { handlers } from "../../../untils/handlers";
+import { handlers } from "../../../utils/handlers";
+import { isSignedIn } from "../../../utils/session";
 import Header from "../Header";
 import SideBar from "../SideBar";
 import WrapperForm from "../WrapperForm";
@@ -28,40 +29,45 @@ function Login() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const { setIsAdmin, setIsModerator, setIsUser, setCurrentUser } = useContext(AuthContext);
+  const { setIsAdmin, setIsModerator, setIsUser, setCurrentUser, currentUser } = useContext(AuthContext);
 
-  const handleLogin = (e) => {
+  useEffect(() => {
+    if (isSignedIn()) { //&& !isRequiredTwoAuth()
+      navigate(Pathname.home);
+    }
+    // } else if (isSignedIn() ) { //&& isRequiredTwoAuth()
+    //   history.push(Pathname.two_factor_proceed, {
+    //     "authy-id": signInfo.data.attributes["authy-id"],
+    //     "user-id": signInfo.data.id
+    //   });
+    // }
+  }, [currentUser]);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     setMessage("");
     setLoading(true);
 
-    AuthService.login(data.login, data.password)
-      .then((user) => {
-        if (user.token) {
-          setCurrentUser(user);
-          setIsUser(user.roles.includes("ROLE_MODERATOR"));
-          setIsModerator(user.roles.includes("ROLE_MODERATOR"));
-          setIsAdmin(user.roles.includes("ROLE_ADMIN"));
-          navigate("/profile");
-          toast.info(`Login Successfully. Welcome!`, {
-            autoClose: 2000
-          });
-        }
-      })
-      .catch((error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        setLoading(false);
-        setMessage(resMessage);
-      });
+    AuthService.login(data.login, data.password).then((user) => {
+      if (user.token) {
+        setCurrentUser(user);
+        setIsUser(user.roles.includes("ROLE_MODERATOR"));
+        setIsModerator(user.roles.includes("ROLE_MODERATOR"));
+        setIsAdmin(user.roles.includes("ROLE_ADMIN"));
+        navigate("/home");
+        toast.info(`Login Successfully. Welcome!`, {
+          autoClose: 2000
+        });
+      }
+    }).catch((error) => {
+      const resMessage = (error.response && error.response.data &&
+        error.response.data.message) || error.message || error.toString();
+      setLoading(false);
+      setMessage(resMessage);
+    });
   };
 
-  const { onChangeInput } = handlers;
+  const { onChangeInputText } = handlers;
 
   return (
     <div className="signin-container" data-testid="sign-in">
@@ -81,7 +87,7 @@ function Login() {
               placeholder="Please enter your login here"
               name="login"
               value={data.login}
-              onChange={onChangeInput("login", data, setData)}
+              onChange={onChangeInputText("login", setData)}
               validations={[required]}
               required
             />
@@ -92,7 +98,7 @@ function Login() {
               placeholder="Please enter your password here"
               name="password"
               value={data.password}
-              onChange={onChangeInput("password", data, setData)}
+              onChange={onChangeInputText("password", setData)}
               validations={[required]}
               required
             />
@@ -101,16 +107,7 @@ function Login() {
               <Button name="Login" size="full" color="primary" type="submit" />
             </div>
           </form>
-          {message && (
-            <div role="alert">
-              <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
-                Danger
-              </div>
-              <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-                <p>{message}</p>
-              </div>
-            </div>
-          )}
+          {message && (toast.warning({ message }))}
           <div className="flex items-center justify-center gap-2 mt-6">
             <p className="text-base text-gray-40">Forgot Password?</p>
             <Link className="flex items-center" to={Pathname.forgotPassword}>

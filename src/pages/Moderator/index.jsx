@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import UserService from "../../api/user.service";
+import UserService from "../../api/userService";
 import EventBus from "../../common/eventBus";
 
-export const Index = () => {
+export const Moderator = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -15,8 +15,8 @@ export const Index = () => {
           (error.response &&
             error.response.data &&
             error.response.data.message) ||
-            error.message ||
-            error.toString()
+          error.message ||
+          error.toString()
         );
 
         if (error.response && error.response.status === 401) {

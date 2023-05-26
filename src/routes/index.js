@@ -1,11 +1,11 @@
 export const Pathname = {
   base: "/",
-  home: "/home",
+  home: "home",
   login: "/login",
-  forgotPassword: "/forgot-password",
+  forgotPassword: "forgot-password",
   register: "/register",
-  profile: "/profile",
-  user: "/user",
-  mod: "/mod",
-  admin: "/admin"
+  profile: "profile",
+  user: "user",
+  mod: "mod",
+  admin: "admin"
 };

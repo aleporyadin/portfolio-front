@@ -1,30 +1,20 @@
-import React, { useEffect, useState } from "react";
-import UserService from "../../api/user.service";
-import Navbar from "../../components/Navbar";
+import React from "react";
+import "./index.scss";
+import { NewsList } from "../../components/NewsList";
 
 export const Home = () => {
-  const [content, setContent] = useState("");
-
-  useEffect(() => {
-    UserService.getPublicContent()
-      .then((response) => {
-        setContent(response.data);
-      })
-      .catch((error) => {
-        setContent(
-          (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        );
-      });
-  }, []);
-
+  console.log("asd");
   return (
-    <div className="container">
-      <Navbar/>
-      <header className="jumbotron">
-        <h3>{content}</h3>
-      </header>
+    <div className="dashboard-layout">
+      <div className="dashboard-container-left-side ">
+        <h1 className="dashboard-item-header font-semibold text-xl4 ">
+          Top News
+        </h1>
+        <NewsList />
+      </div>
+      <div className="dashboard-container-other-cells">
+        asdxz
+      </div>
     </div>
   );
 };

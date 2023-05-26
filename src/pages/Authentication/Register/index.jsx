@@ -1,52 +1,17 @@
+import { TextField } from "@mui/material";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import React, { useState } from "react";
-import isEmail from "validator/es/lib/isEmail";
-import AuthService from "../../../api/AuthService";
+import AuthService from "../../../api/authService";
 import Button from "../../../components/Button";
-import Input from "../../../components/Input";
-import { handlers } from "../../../untils/handlers";
-
-const required = (value) => {
-  if (!value) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This field is required!
-      </div>
-    );
-  }
-};
-
-const email = (value) => {
-  if (!isEmail(value)) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        This is not a valid email.
-      </div>
-    );
-  }
-};
-
-const vusername = (value) => {
-  if (value.length < 3 || value.length > 20) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The username must be between 3 and 20 characters.
-      </div>
-    );
-  }
-};
-
-const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
-      </div>
-    );
-  }
-};
+import { handlers } from "../../../utils/handlers";
 
 export default function Register() {
-  const [data, setData] = useState({ username: "", email: "", password: "" });
+
+  const [data, setData] = useState({
+    firstName: "", lastName: "", username: "",
+    email: "", password: "", avatar: null, birthdate: ""
+  });
   const [message, setMessage] = useState("");
   const [successful, setSuccessful] = useState(false);
 
@@ -56,12 +21,14 @@ export default function Register() {
     setMessage("");
     setSuccessful(false);
 
-    AuthService.register(data.username, data.email, data.password)
+    AuthService.register(data)
       .then((response) => {
+        console.log(response);
         setMessage(response.data.message);
         setSuccessful(true);
       })
       .catch((error) => {
+        console.log(error);
         const resMessage =
           (error.response &&
             error.response.data &&
@@ -74,7 +41,7 @@ export default function Register() {
       });
   };
 
-  const { onChangeInput } = handlers;
+  const { onChangeTextField, onChangeInputFile, onChangeDate } = handlers;
 
   return (
     <div>
@@ -85,62 +52,98 @@ export default function Register() {
             {!successful && (
               <div>
                 <div className="form-group">
-                  <label htmlFor="username">Username</label>
-                  <Input
+                  <TextField
+                    required
                     type="text"
-                    className="form-control"
+                    label="Username"
+                    variant="standard"
                     name="username"
                     value={data.username}
-                    onChange={onChangeInput("username", data, setData)}
-                    validations={[required, vusername]}
+                    onChange={onChangeTextField("username", setData)}
                   />
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <Input
-                    type="text"
-                    className="form-control"
+                  <TextField
+                    required
+                    label="Email"
+                    type="email"
+                    variant="standard"
                     name="email"
                     value={data.email}
-                    onChange={onChangeInput("email", data, setData)}
-                    validations={[required, email]}
+                    onChange={onChangeTextField("email", setData)}
                   />
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <Input
+                  <TextField
+                    required
+                    label="Password"
                     type="password"
-                    className="form-control"
+                    variant="standard"
                     name="password"
                     value={data.password}
-                    onChange={onChangeInput("password", data, setData)}
-                    validations={[required, vpassword]}
+                    onChange={onChangeTextField("password", setData)}
                   />
                 </div>
 
                 <div className="form-group">
-                  <button className="btn btn-primary btn-block">Sign Up</button>
+                  <TextField
+                    required
+                    type="text"
+                    label="First name"
+                    variant="standard"
+                    name="firstName"
+                    value={data.firstName}
+                    onChange={onChangeTextField("firstName", setData)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <TextField
+                    required
+                    label="Last name"
+                    type="text"
+                    variant="standard"
+                    name="lastName"
+                    value={data.lastName}
+                    onChange={onChangeTextField("lastName", setData)}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      disablePast
+                      format="DD/MM/YYYY"
+                      value={data.birthdate}
+                      slotProps={{ textField: { variant: "standard", required: true } }}
+                      onChange={onChangeDate("birthdate", setData)} />
+                  </LocalizationProvider>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="avatar">Add user avatar</label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    name="avatar"
+                    accept="image/png, image/jpeg"
+                    onChange={onChangeInputFile("avatar", setData)}
+                  />
+                </div>
+                <div className="form-group pt-12">
+                  <Button name="Register" size="full" color="primary" type="submit" />
                 </div>
               </div>
             )}
-
             {message && (
               <div className="form-group">
-                <div
-                  className={
-                    successful ? "alert alert-success" : "alert alert-danger"
-                  }
-                  role="alert"
-                >
+                <div className={successful ? "alert alert-success" : "alert alert-danger"} role="alert">
                   {message}
                 </div>
               </div>
             )}
-            <div className="pt-12">
-              <Button name="Login" size="full" color="primary" type="submit" />
-            </div>
           </form>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserService from "../../api/user.service";
+import UserService from "../../api/userService";
 import EventBus from "../../common/eventBus";
 
 export const Admin = () => {
@@ -15,8 +15,8 @@ export const Admin = () => {
           (error.response &&
             error.response.data &&
             error.response.data.message) ||
-            error.message ||
-            error.toString()
+          error.message ||
+          error.toString()
         );
 
         if (error.response && error.response.status === 401) {

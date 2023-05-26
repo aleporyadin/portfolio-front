@@ -1,4 +1,16 @@
 // common style classes for the app
+.date-picker {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.my-custom-datepicker input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
 
 .coming-soon {
   height: calc(100vh - 44px);
@@ -64,17 +76,7 @@
   display: block;
 }
 
-.home-screen {
-  @apply bg-gray-10;
-  @apply text-black-10;
-  height: 100vh;
-  padding: 24px;
-}
 
-.layout-home {
-  display: flex;
-  gap: 12px;
-}
 
 .nav-bar {
   @apply bg-white;

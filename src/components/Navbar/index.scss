@@ -1,4 +1,50 @@
-.navbar-container {
-  max-height: 300px;
-  min-height: 80px;
+.smooth-icon {
+  height: 38px;
+  width: 38px;
+  background-color: #f7fafe;
+  border-radius: 10px;
 }
+
+.extra-filled {
+  fill: #2f80ed;
+}
+
+//.navbar-container {
+//  display: grid;
+//  grid-template-rows: 1fr;
+//  grid-template-columns: repeat(12, minmax(0, 1fr));
+//  max-height: 300px;
+//  min-height: 80px;
+//  line-height: 2rem;
+//  color: white;
+//  font-weight: 700;
+//  justify-items: center;
+//  align-items: baseline;
+//  background-color: var(--color-primary-10);
+//}
+//
+//.navbar {
+//  grid-column-start: 9;
+//  grid-column-end: 12;
+//  //grid-column: span 6 / span 6;
+//  display: grid;
+//  gap: 2rem;
+//  grid-template-rows: 1fr;
+//  grid-template-columns: repeat(5, minmax(0, 1fr));
+//  line-height: 2rem;
+//  color: white;
+//  font-weight: 700;
+//  justify-items: center;
+//  align-items: baseline;
+//  height: 100%;
+//}
+//
+//a {
+//  transition: 1s;
+//  font-weight: 500;
+//}
+//
+//a:hover {
+//  color: #aed7ff;
+//  transition: 1s;
+//}

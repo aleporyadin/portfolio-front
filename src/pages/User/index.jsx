@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UserService from "../../api/user.service";
+import UserService from "../../api/userService";
 import EventBus from "../../common/eventBus";
 
 export const User = () => {
