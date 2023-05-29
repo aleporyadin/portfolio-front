@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dff4d6f9-e694-4ebe-8b2c-9d45223d0362" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/constants/messages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+    <list default="true" id="dff4d6f9-e694-4ebe-8b2c-9d45223d0362" name="Changes" comment="deploy setting">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/authService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NewsList/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NewsList/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Profile/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/RouteSwitch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/RouteSwitch.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,11 +82,46 @@
       <option name="presentableId" value="Default" />
       <updated>1685292493189</updated>
       <workItem from="1685292494242" duration="3557000" />
-      <workItem from="1685344628585" duration="3556000" />
+      <workItem from="1685344628585" duration="6647000" />
     </task>
+    <task id="LOCAL-00001" summary="Init">
+      <created>1685356173110</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685356173110</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Init">
+      <created>1685357735811</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685357735811</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'github/main'">
+      <created>1685358607233</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685358607233</updated>
+    </task>
+    <task id="LOCAL-00004" summary="deploy setting">
+      <created>1685359102182</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685359102182</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init" />
+    <MESSAGE value="Merge remote-tracking branch 'github/main'" />
+    <MESSAGE value="deploy setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy setting" />
   </component>
 </project>
