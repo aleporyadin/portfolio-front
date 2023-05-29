@@ -15,9 +15,9 @@ export const NewsList = () => {
   });
   console.log(data);
   const getNews = async () => {
-    setData({ ...data, loading: true });
+    setData({...data, loading: true});
     try {
-      const response = await NewsService.getNews({ page: data.page, size: data.size });
+      const response = await NewsService.getNews({page: data.page, size: data.size});
       if (response.articles.length) {
         setData({
           ...data,
@@ -27,11 +27,11 @@ export const NewsList = () => {
           page: data.page + 1
         });
       } else {
-        setData({ ...data, loading: false });
+        setData({...data, loading: false});
       }
     } catch (error) {
       console.error(error);
-      setData({ ...data, loading: false, error: "Cannot load news.." });
+      setData({...data, loading: false, error: "Cannot load news.."});
     }
   };
 
@@ -60,7 +60,7 @@ export const NewsList = () => {
             </div>
           </div>
           <div className="news-image-container">
-            <img src={article.urlToImage} width="350px" height="300px" alt="" />
+            <img src={article.urlToImage} width="350px" height="300px" alt=""/>
           </div>
         </div>
       ))}

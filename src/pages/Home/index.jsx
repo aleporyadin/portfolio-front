@@ -3,7 +3,7 @@ import "./index.scss";
 import { NewsList } from "../../components/NewsList";
 
 export const Home = () => {
-  console.log("asd");
+
   return (
     <div className="dashboard-layout">
       <div className="dashboard-container-left-side ">
