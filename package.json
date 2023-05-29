@@ -7,12 +7,11 @@
     "npm": "9.6.7"
   },
   "scripts": {
-    "start": "node node_modules/.bin/react-scripts start",
-    "build": "node node_modules/.bin/react-scripts build",
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "heroku-postbuild": "npm run build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
