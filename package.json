@@ -1,5 +1,5 @@
 {
-  "name": "portfolio-ui",
+  "name": "portfolio-front",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -7,10 +7,12 @@
     "npm": "9.6.7"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve -s build",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
