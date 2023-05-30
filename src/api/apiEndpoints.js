@@ -1,11 +1,11 @@
 import {LOCAL_HOST} from "../constants/server";
 
 const setBaseURL = () => {
-    return process.env.NODE_ENV === "production" ? `${process.env.API_URL}` : LOCAL_HOST;
+    return process.env.NODE_ENV === "production" ? `${process.env.REACT_APP_API_URL}` : LOCAL_HOST;
 };
 console.log(`${process.env}`)
 const apiEndpoints = {
-    BASE_URL: setBaseURL(),
+    API_URL: setBaseURL(),
 
     // BASE_URL: `${process.env.APP_ADDRESS}`,
 
