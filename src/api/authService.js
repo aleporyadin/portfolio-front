@@ -14,7 +14,7 @@ const login = async (username, password) => {
     const data = {username, password};
     const request = AUTH_URL + LOGIN;
     const response = await axios.post(request, data);
-
+    console.log(request, AUTH_URL,LOGIN)
     if (response.data.token) {
       sessionStorage.setItem("user", JSON.stringify(response.data));
     } else {
