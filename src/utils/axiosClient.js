@@ -3,7 +3,7 @@ import {toast} from "react-toastify";
 import apiEndpoints from "../api/apiEndpoints";
 
 axios.defaults.baseURL = apiEndpoints.API_URL;
-
+console.log(apiEndpoints)
 const NONCE_PRECISION = 1e4,
     API_JSON = "application/vnd.api+json";
 // SPLITTER = "//"
