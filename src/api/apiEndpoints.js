@@ -1,5 +1,5 @@
 const apiEndpoints = {
-  BASE_URL: `${process.env.REACT_APP_API_BASE_URL}/`,
+  BASE_URL: `${process.env.APP_ADDRESS}/`,
 
   AUTH_URL: "api/auth/",
   TEST_URL: "api/test/",
