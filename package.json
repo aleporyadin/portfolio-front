@@ -13,7 +13,7 @@
     ]
   },
   "scripts": {
-    "start": "env-cmd -f ./.env.alpha npm run start",
+    "start": "serve -s build",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
