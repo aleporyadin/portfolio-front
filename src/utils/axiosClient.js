@@ -1,11 +1,11 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 import apiEndpoints from "../api/apiEndpoints";
 
-axios.defaults.baseURL = apiEndpoints.BASE_URL; // api base url
-console.log(apiEndpoints.BASE_URL)
+axios.defaults.baseURL = `${process.env.APP_ADDRESS}/`; // api base url
+console.log(apiEndpoints.BASE_URL, axios.defaults.baseURL)
 const NONCE_PRECISION = 1e4,
-  API_JSON = "application/vnd.api+json";
+    API_JSON = "application/vnd.api+json";
 // SPLITTER = "//"
 // API_KEY = "api-key",
 // API_SECRET = "api-secret",
@@ -24,60 +24,60 @@ const NONCE_PRECISION = 1e4,
 // }
 
 axios.interceptors.request.use(
-  (config) => {
-    const newConfig = config;
+    (config) => {
+        const newConfig = config;
 
-    newConfig.headers["Content-Type"] = API_JSON;
-    newConfig.headers.Accept = API_JSON;
+        newConfig.headers["Content-Type"] = API_JSON;
+        newConfig.headers.Accept = API_JSON;
 
-    // const isXApiKeyVersion = X_API_KEY_URL.includes(config.url.split("/")[0]);
+        // const isXApiKeyVersion = X_API_KEY_URL.includes(config.url.split("/")[0]);
 
-    // if (isXApiKeyVersion) {
-    //   newConfig.headers["X-Api-Key"] = getLocalItem(X_API_KEY);
-    //   return newConfig;
-    // }
+        // if (isXApiKeyVersion) {
+        //   newConfig.headers["X-Api-Key"] = getLocalItem(X_API_KEY);
+        //   return newConfig;
+        // }
 
-    // const dataToCrypt = calcDataToCrypt(config, nonce);
-    // const key = getLocalItem(API_KEY) || process.env.REACT_APP_API_KEY;
-    // const secret = getLocalItem(API_SECRET) || process.env.REACT_APP_API_SECRET;
-    // const sign = CryptoJS.HmacSHA512(dataToCrypt, secret).toString();
+        // const dataToCrypt = calcDataToCrypt(config, nonce);
+        // const key = getLocalItem(API_KEY) || process.env.REACT_APP_API_KEY;
+        // const secret = getLocalItem(API_SECRET) || process.env.REACT_APP_API_SECRET;
+        // const sign = CryptoJS.HmacSHA512(dataToCrypt, secret).toString();
 
-    // newConfig.headers.nonce = Date.now() * NONCE_PRECISION;
-    // newConfig.headers.Sign = sign;
-    // newConfig.headers.Key = key;
+        // newConfig.headers.nonce = Date.now() * NONCE_PRECISION;
+        // newConfig.headers.Sign = sign;
+        // newConfig.headers.Key = key;
 
-    return newConfig;
-  },
-  (error) => Promise.reject(error)
+        return newConfig;
+    },
+    (error) => Promise.reject(error)
 );
 
 axios.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response) {
-      const message = error.response.data.detail;
-      if (message) {
-        if (error.response.status === 500) {
-          toast.error(message);
-        } else if (error.response.status === 402) {
-          toast.error(message);
-        } else if (error.response.status === 401) {
-          toast.warning(message);
-        } else if (error.response.status === 404) {
-          toast.error(message);
-        } else if (error.response.status === 403) {
-          toast.warning(message);
-        } else if (error.response.status === 400) {
-          toast.error(message);
+    (response) => response,
+    (error) => {
+        if (error.response) {
+            const message = error.response.data.detail;
+            if (message) {
+                if (error.response.status === 500) {
+                    toast.error(message);
+                } else if (error.response.status === 402) {
+                    toast.error(message);
+                } else if (error.response.status === 401) {
+                    toast.warning(message);
+                } else if (error.response.status === 404) {
+                    toast.error(message);
+                } else if (error.response.status === 403) {
+                    toast.warning(message);
+                } else if (error.response.status === 400) {
+                    toast.error(message);
+                }
+            } else {
+                toast.error("Unknown error");
+            }
+            console.log("error", error);
         }
-      } else {
-        toast.error("Unknown error");
-      }
-      console.log("error", error);
-    }
 
-    return Promise.reject(error);
-  }
+        return Promise.reject(error);
+    }
 );
 
 export default axios;
