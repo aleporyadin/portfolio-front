@@ -4,12 +4,11 @@ import newsEndpoints from "./newsEndpoints";
 
 const {
   BASE_URL,
-  NEWS_TOP
+  NEWS_TOP,
+  NEWS_API_KEY
 } = newsEndpoints;
 
-const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
-
-const getNews = async ({ page, size }) => {
+const getNews = async ({page, size}) => {
   try {
     const query = queryParamsToQueryString({
       country: "ua", apiKey: NEWS_API_KEY, page: page, pageSize: size
