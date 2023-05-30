@@ -2,8 +2,8 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import apiEndpoints from "../api/apiEndpoints";
 
-axios.defaults.baseURL = `${process.env.APP_ADDRESS}/`; // api base url
-console.log(apiEndpoints.BASE_URL, axios.defaults.baseURL)
+// axios.defaults.baseURL = `${process.env.APP_ADDRESS}/`; // api base url
+console.log(apiEndpoints.BASE_URL, axios.defaults.baseURL, process.env.APP_ADDRESS)
 const NONCE_PRECISION = 1e4,
     API_JSON = "application/vnd.api+json";
 // SPLITTER = "//"
