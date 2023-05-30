@@ -1,7 +1,7 @@
 import { LOCAL_HOST } from "../constants/server";
 
 const setBaseURL = () => {
-  return process.env.APP_ADDRESS ? "" : LOCAL_HOST;
+  return process.env.NODE_ENV === "production" ? "" : LOCAL_HOST;
 };
 
 const apiEndpoints = {
