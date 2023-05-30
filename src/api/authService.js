@@ -1,7 +1,7 @@
 import axios from "../utils/axiosClient";
 import apiEndpoints from "./apiEndpoints";
 import { toast } from "react-toastify";
-import { CANNOT_FIND_TOKEN, MESSAGE_CONNECTED_FAILED, MESSAGE_CONNECTED_FAILED_ERROR } from "../constants/messages";
+import { CANNOT_FIND_TOKEN, MESSAGE_CONNECTED_FAILED_ERROR } from "../constants/messages";
 
 const {
   LOGIN,
