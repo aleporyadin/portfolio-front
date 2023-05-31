@@ -1,8 +1,18 @@
-import React from "react";
-import "./index.scss";
+import React, { useEffect } from "react";
+import "./index.css";
 import { NewsList } from "../../components/NewsList";
+import JobsService from "../../api/jobsService";
+import WeatherService from "../../api/weatherService";
 
 export const Home = () => {
+  // JobsService.getJobs()
+  // const s = async () => {
+  //   console.log(await WeatherService.getWeather())
+  //
+  // }
+  // useEffect(() => {
+  //  s()
+  // }, []);
 
   return (
     <div className="dashboard-layout">
@@ -13,7 +23,12 @@ export const Home = () => {
         <NewsList />
       </div>
       <div className="dashboard-container-other-cells">
-        asdxz
+        <div className="dashboard-weather-container">
+
+        </div>
+        <div className="dashboard-weather-container">
+
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { Box, Button, Grid } from "@mui/material";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import "./index.scss";
+import "./index.css";
 import NewsService from "../../api/newsService";
 
 export const NewsList = () => {
