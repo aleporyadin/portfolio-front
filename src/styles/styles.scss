@@ -77,7 +77,6 @@
 }
 
 
-
 .nav-bar {
   @apply bg-white;
   height: calc(100vh - 44px);
@@ -86,13 +85,14 @@
   border: 1px solid theme("colors.secondary.20");
   overflow: auto;
 
-  .iress-icon {
-    margin: 10px;
+
+  .logo-icon {
+    margin: 5px 0 0 10px;
   }
 
   .horizontal-line {
     width: auto;
-    margin: 25px 10px;
+    margin: 25px 5px 25px 10px;
   }
 
   .bottom-container {
@@ -154,6 +154,10 @@
     fill: #2f80ed;
     fill-opacity: 1 !important;
   }
+}
+
+.nav-bar::-webkit-scrollbar-track {
+  margin: 105px 0 15px 0;
 }
 
 .layout-three-raw-container {

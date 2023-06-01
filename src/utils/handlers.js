@@ -33,13 +33,11 @@ const onChangeTextField = (key, setData) => (item) => {
 };
 
 const onChangeInputText = (key, setData) => (item) => {
-  console.log(item?.target?.value, item);
   setData((prevData) => ({
     ...prevData,
     [key]: item
   }));
 };
-
 
 const onChangeInputFile = (key, setData) => (item) => {
   setData((prevData) => ({

@@ -1,19 +1,10 @@
 import React, { useEffect } from "react";
 import "./index.css";
-import { NewsList } from "../../components/NewsList";
-import JobsService from "../../api/jobsService";
-import WeatherService from "../../api/weatherService";
-import {WeatherBar} from "../../components/WeatherBar";
+import { NewsBar } from "../../components/NewsBar";
+import WeatherBar from "../../components/WeatherBar";
+import JobsBar from "../../components/JobsBar";
 
 export const Home = () => {
-  // JobsService.getJobs()
-  // const s = async () => {
-  //   console.log(await WeatherService.getWeather())
-  //
-  // }
-  // useEffect(() => {
-  //  s()
-  // }, []);
 
   return (
     <div className="dashboard-layout">
@@ -21,15 +12,19 @@ export const Home = () => {
         <h1 className="dashboard-item-header font-semibold text-xl4 ">
           Top News
         </h1>
-        <NewsList />
+        <NewsBar/>
       </div>
-      <div className="dashboard-container-other-cells">
-        <div className="dashboard-weather-container">
-          <WeatherBar/>
-        </div>
-        <div className="dashboard-weather-container">
-
-        </div>
+      <div className="dashboard-weather-container">
+        <h1 className="dashboard-item-header font-semibold text-xl4 ">
+          Weather for
+        </h1>
+        <WeatherBar/>
+      </div>
+      <div className="dashboard-jobs-container">
+        <h1 className="dashboard-item-header font-semibold text-xl4 ">
+          List of Jobs
+        </h1>
+        <JobsBar/>
       </div>
     </div>
   );

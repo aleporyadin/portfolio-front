@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import NewsService from "../../api/newsService";
 
-export const NewsList = () => {
+export const NewsBar = () => {
   const [data, setData] = useState({
     news: [],
     count: 0,
@@ -13,11 +13,12 @@ export const NewsList = () => {
     page: 1,
     size: 10
   });
-  console.log(data);
+
   const getNews = async () => {
     setData({...data, loading: true});
     try {
-      const response = await NewsService.getNews({page: data.page, size: data.size});
+      const response = await NewsService.getNews({page: data.page, size: data.size}); //Promise;//
+
       if (response.articles.length) {
         setData({
           ...data,

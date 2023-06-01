@@ -7,5 +7,7 @@ export const Pathname = {
   profile: "profile",
   user: "user",
   mod: "mod",
-  admin: "admin"
+  admin: "admin",
+  portfolio: "portfolio",
+  account: "account"
 };

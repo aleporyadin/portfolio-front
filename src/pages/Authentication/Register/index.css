@@ -36,6 +36,8 @@
 }
 
 .form-left-side {
+    display: flex;
+    flex-direction: column;
     grid-column-start: 1;
 }
 
@@ -50,5 +52,12 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.label-bd {
+    color: var(--color-gray-30);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 3px 0 4px 0;
+}
 
 

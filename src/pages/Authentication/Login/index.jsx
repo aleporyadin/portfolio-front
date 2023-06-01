@@ -1,18 +1,18 @@
-import {ArrowForwardIosRounded as ArrowForwardIcon} from "@mui/icons-material";
-import React, {useContext, useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { ArrowForwardIosRounded as ArrowForwardIcon } from "@mui/icons-material";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../../../api/authService";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import AuthContext from "../../../context/AuthContext";
-import {Pathname} from "../../../routes";
-import {handlers} from "../../../utils/handlers";
-import {isSignedIn} from "../../../utils/session";
+import { Pathname } from "../../../routes";
+import { handlers } from "../../../utils/handlers";
+import { isSignedIn } from "../../../utils/session";
 import Header from "../Header";
 import SideBar from "../SideBar";
 import WrapperForm from "../WrapperForm";
 import FormHeader from "./FormHeader";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const required = (value) => {
   if (!value) {
@@ -61,7 +61,7 @@ function Login() {
       const resMessage = (error.response && error.response.data &&
         error.response.data.message) || error.message || error.toString();
       setLoading(false);
-      toast.error({resMessage})
+      toast.error({resMessage});
     });
   };
 
@@ -79,25 +79,21 @@ function Login() {
         <div className="sign-in-form-details">
           <form onSubmit={handleLogin}>
             <Input
-              id="login"
               label="Your Username"
               type="text"
               placeholder="Please enter your Username here"
               name="login"
               value={data.login}
               onChange={onChangeInputText("login", setData)}
-              validations={[required]}
               required
             />
             <Input
-              id="password"
               label="Your Password"
               type="password"
               placeholder="Please enter your password here"
               name="password"
               value={data.password}
               onChange={onChangeInputText("password", setData)}
-              validations={[required]}
               required
             />
 

@@ -3,11 +3,16 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import AuthService from "../../api/authService";
 import AuthContext from "../../context/AuthContext";
+import { Pathname } from "../../routes";
+import { useNavigate } from "react-router-dom";
 
-function Banner({ name, style, subtitle }) {
-  const { currentUser } = useContext(AuthContext);
-  const { logout } = AuthService;
-  const HELP_LINK = "Link for help page";
+function Banner({name, style, subtitle}) {
+  const {currentUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const logout = () => {
+    AuthService.logout();
+    navigate(Pathname.login);
+  };
 
   return (
     <div className={classNames("banner", style)} data-testid="banner">
@@ -31,7 +36,7 @@ function Banner({ name, style, subtitle }) {
           </button>
         </div>
         <div>
-          <a href={HELP_LINK} target="_blank" rel="noreferrer" className="text-blue-10 text-base">
+          <a href="#" target="_blank" rel="noreferrer" className="text-blue-10 text-base">
             Help
           </a>
         </div>
