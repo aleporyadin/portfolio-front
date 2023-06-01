@@ -1,0 +1,54 @@
+.left-side-bar-container {
+    max-width: 560px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mg-logo {
+    margin-top: 5%;
+    margin-left: 6%;
+}
+
+.dc-align {
+    display: inline;
+    width: 42%;
+    position: relative;
+}
+
+.left-heading {
+    position: relative;
+    left: 18%;
+}
+
+.dots-section {
+    margin: 4px;
+}
+
+.footer {
+    padding-left: 32px;
+    /*padding-bottom: 28px;*/
+}
+
+.terms {
+    padding-top: 22px;
+}
+
+.form-left-side {
+    grid-column-start: 1;
+}
+
+.form-right-side {
+    grid-column-start: 2;
+}
+
+.from-fio-container,
+.from-meta-data-container {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+

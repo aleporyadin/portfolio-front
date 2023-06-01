@@ -3,6 +3,7 @@ import "./index.css";
 import { NewsList } from "../../components/NewsList";
 import JobsService from "../../api/jobsService";
 import WeatherService from "../../api/weatherService";
+import {WeatherBar} from "../../components/WeatherBar";
 
 export const Home = () => {
   // JobsService.getJobs()
@@ -24,7 +25,7 @@ export const Home = () => {
       </div>
       <div className="dashboard-container-other-cells">
         <div className="dashboard-weather-container">
-
+          <WeatherBar/>
         </div>
         <div className="dashboard-weather-container">
 

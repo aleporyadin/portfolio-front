@@ -24,3 +24,13 @@
   border-bottom: 1px solid var(--color-secondary-20);
   margin-bottom: 20px;
 }
+
+.dashboard-weather-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px 15px 30px 20px;
+//height: calc(100vh - 170px);
+  background-color: #fff;
+  border-radius: 16px;
+}

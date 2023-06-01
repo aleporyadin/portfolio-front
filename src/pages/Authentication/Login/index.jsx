@@ -1,18 +1,18 @@
-import { ArrowForwardIosRounded as ArrowForwardIcon } from "@mui/icons-material";
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {ArrowForwardIosRounded as ArrowForwardIcon} from "@mui/icons-material";
+import React, {useContext, useEffect, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import AuthService from "../../../api/authService";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import AuthContext from "../../../context/AuthContext";
-import { Pathname } from "../../../routes";
-import { handlers } from "../../../utils/handlers";
-import { isSignedIn } from "../../../utils/session";
+import {Pathname} from "../../../routes";
+import {handlers} from "../../../utils/handlers";
+import {isSignedIn} from "../../../utils/session";
 import Header from "../Header";
 import SideBar from "../SideBar";
 import WrapperForm from "../WrapperForm";
 import FormHeader from "./FormHeader";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
 const required = (value) => {
   if (!value) {
@@ -25,11 +25,10 @@ const required = (value) => {
 };
 
 function Login() {
-  const [data, setData] = useState({ login: "", password: "" });
+  const [data, setData] = useState({login: "", password: ""});
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const { setIsAdmin, setIsModerator, setIsUser, setCurrentUser, currentUser } = useContext(AuthContext);
+  const {setIsAdmin, setIsModerator, setIsUser, setCurrentUser, currentUser} = useContext(AuthContext);
 
   useEffect(() => {
     if (isSignedIn()) { //&& !isRequiredTwoAuth()
@@ -45,7 +44,6 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setMessage("");
     setLoading(true);
 
     AuthService.login(data.login, data.password).then((user) => {
@@ -63,17 +61,17 @@ function Login() {
       const resMessage = (error.response && error.response.data &&
         error.response.data.message) || error.message || error.toString();
       setLoading(false);
-      setMessage(resMessage);
+      toast.error({resMessage})
     });
   };
 
-  const { onChangeInputText } = handlers;
+  const {onChangeInputText} = handlers;
 
   return (
     <div className="signin-container" data-testid="sign-in">
-      <SideBar />
+      <SideBar/>
       <WrapperForm>
-        <Header back={false} />
+        <Header back={false}/>
         <FormHeader
           title="Welcome Back!"
           description="Please enter your details below in order to login to the Portfolio."
@@ -82,9 +80,9 @@ function Login() {
           <form onSubmit={handleLogin}>
             <Input
               id="login"
-              label="Your Login"
+              label="Your Username"
               type="text"
-              placeholder="Please enter your login here"
+              placeholder="Please enter your Username here"
               name="login"
               value={data.login}
               onChange={onChangeInputText("login", setData)}
@@ -104,15 +102,21 @@ function Login() {
             />
 
             <div className="pt-12">
-              <Button name="Login" size="full" color="primary" type="submit" />
+              <Button name="Login" size="full" color="primary" type="submit"/>
             </div>
           </form>
-          {message && (toast.warning({ message }))}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            <p className="text-base text-gray-40">Forgot Password?</p>
+          <div className="grid grid-cols-2 grid-rows-2 gap-2 mt-6">
+            <p className="w-full flex justify-end text-base text-gray-40">Forgot Password?</p>
+
             <Link className="flex items-center" to={Pathname.forgotPassword}>
               <p className="text-base font-medium">Reset it here</p>
-              <ArrowForwardIcon />
+              <ArrowForwardIcon/>
+            </Link>
+            <p className="w-full flex justify-end text-base text-gray-40">Or. </p>
+
+            <Link className="flex items-center" to={Pathname.register}>
+              <p className="text-base font-medium">What to Register?</p>
+              <ArrowForwardIcon/>
             </Link>
           </div>
         </div>

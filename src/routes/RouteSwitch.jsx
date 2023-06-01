@@ -22,7 +22,7 @@ export default function RouteSwitch() {
         window.location.reload();
       }
     } else {
-      //navigate(Pathname.login);
+      navigate(Pathname.login);
     }
   }, []);
 
