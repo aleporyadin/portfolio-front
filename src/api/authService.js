@@ -1,12 +1,12 @@
 import axios from "../utils/axiosClient";
 import apiEndpoints from "./apiEndpoints";
-import { toast } from "react-toastify";
 import { CANNOT_FIND_TOKEN, MESSAGE_CONNECTED_FAILED_ERROR } from "../constants/messages";
 
 const {
   LOGIN,
   AUTH_URL,
-  REGISTER
+  REGISTER,
+  USER
 } = apiEndpoints;
 
 const login = async (username, password) => {

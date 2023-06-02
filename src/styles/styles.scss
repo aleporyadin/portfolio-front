@@ -84,7 +84,7 @@
   min-width: 88px;
   border: 1px solid theme("colors.secondary.20");
   //overflow: auto;
-
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
   .logo-icon {
     margin: 12px 0 0 10px;
@@ -176,7 +176,7 @@
   align-items: center;
   justify-content: space-between;
   border: 1px solid theme("colors.secondary.20");
-}
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;}
 
 .merge-all-col {
   grid-column: 1 / 3;
