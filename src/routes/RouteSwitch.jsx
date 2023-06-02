@@ -1,20 +1,22 @@
-import { isEmpty } from "lodash";
 import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import AuthService from "../api/authService";
-import AuthContext from "../context/AuthContext";
-import { isSignedIn } from "../utils/session";
-import { Pathname } from "./index";
 import Switches from "./Switches";
+import { useNavigate } from "react-router-dom";
+import { isSignedIn } from "../utils/session";
+import { isEmpty } from "lodash";
+import { Pathname } from "./index";
+import AuthContext from "../context/AuthContext";
+import AuthService from "../api/authService";
 
 export default function RouteSwitch() {
-  const { currentUser, setCurrentUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  useEffect(() => {
+  const {currentUser, setCurrentUser} = useContext(AuthContext);
+
+  const checkUser = () => {
     if (isSignedIn()) {
       if (!isEmpty(currentUser)) return;
       const user = AuthService.getCurrentUser();
+      console.log(user);
       if (user) {
         setCurrentUser(user);
       } else {
@@ -24,7 +26,13 @@ export default function RouteSwitch() {
     } else {
       navigate(Pathname.login);
     }
+  };
+
+  useEffect(() => {
+    checkUser();
   }, []);
 
-  return <Switches />;
+  return (
+    <Switches/>
+  );
 }

@@ -1,70 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./index.css";
-import axios from "axios";
 
-export const ProjectsBar = () => {
-  const [fileList, setFileList] = useState([]);
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  useEffect(() => {
-    fetchFileList();
-  }, []);
-
-  const fetchFileList = async () => {
-    try {
-      const response = await axios.get('/api/files/list/1'); // Replace '1' with the appropriate user ID
-      setFileList(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+const ProjectsBar = ({projectsList, handlers}) => {
+  const {handleDownload, handleDelete, handleUpload, handleFileChange, setSelectedFile, selectedFile} = handlers;
+  const setStyleTransaction = (item) => {
+    return (selectedFile === item) ? "selected-file" : "";
   };
-
-  const handleFileUpload = async (event) => {
-    event.preventDefault();
-
-    if (selectedFile) {
-      const formData = new FormData();
-      formData.append('file', selectedFile);
-      formData.append('userId', 1); // Replace '1' with the appropriate user ID
-
-      try {
-        const response = await axios.post('/api/files/upload', formData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        });
-        console.log(response.data); // Display success message
-        fetchFileList(); // Refresh the file list
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-
-  const handleFileDelete = async (fileName) => {
-    try {
-      const response = await axios.delete(`/api/files/delete/1/${fileName}`); // Replace '1' with the appropriate user ID
-      console.log(response.data); // Display success message
-      fetchFileList(); // Refresh the file list
-    } catch (error) {
-      console.log(error);
-    }
+  const onClick = (item) => {
+    setSelectedFile(item);
   };
 
   return (
-    <div>
-      <h2>File List</h2>
-      <ul>
-        {fileList.map((fileName) => (
-          <li key={fileName}>
-            {fileName}
-            <button onClick={() => handleFileDelete(fileName)}>Delete</button>
+    <div className="files-container">
+      <ul className="files-list">
+        {projectsList.map((file) => (
+          <li key={file.id} className={`files-list-item ${setStyleTransaction(file)}`}
+              onClick={() => onClick(file)}>
+            <div className="truncate ">{file.name}</div>
           </li>
         ))}
       </ul>
-      <h2>Upload File</h2>
-      <form onSubmit={handleFileUpload}>
-        <input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} />
-        <button type="submit">Upload</button>
-      </form>
+      <div>
+        <input type="file" onChange={handleFileChange}/>
+        <button onClick={handleUpload}>Upload</button>
+        {/*<button onClick={() => handleDownload()}>Download</button>*/}
+        {/*<button onClick={() => handleDelete(file)}>Delete</button>*/}
+      </div>
     </div>
   );
 };
+
+export default ProjectsBar;

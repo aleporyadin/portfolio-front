@@ -27,12 +27,12 @@ function Navbar() {
       <LogoIcon className="logo-icon"/>
       <Divider className="horizontal-line"/>
       <div className="nav-bundle flex flex-col items-center">
-        <NavLink exact="true" to={Pathname.home}>
+        <NavLink exact="true" to={Pathname.home} >
           <Tooltip title="Dashboard">
             <OverviewIcon className={clsx("overview-icon", "smooth-icon")}/>
           </Tooltip>
         </NavLink>
-        <NavLink exact to={Pathname.projects}>
+        <NavLink exact="true" to={Pathname.projects}>
           <Tooltip title="Check Projects">
             <ProductsIcon className={clsx("overview-icon", "smooth-icon")}/>
           </Tooltip>

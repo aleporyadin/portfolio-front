@@ -14,7 +14,7 @@ module.exports = {
     "plugin:jest/recommended",
     "plugin:testing-library/react",
     "plugin:import/recommended",
-    "react-app",
+    "react-app"
   ],
   parser: "@babel/eslint-parser",
   parserOptions: {
@@ -35,6 +35,7 @@ module.exports = {
     "comma-dangle": ["warn", "never"],
     "eol-last": "warn",
     "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   },
   settings: {
     react: {

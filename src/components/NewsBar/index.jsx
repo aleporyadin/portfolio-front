@@ -49,19 +49,17 @@ export const NewsBar = () => {
       {data.news.map((article, index) => (
         <div key={index} className="news-item-container">
           <div className="news-header flex flex-col">
+            <p className="underline">
+              <a href={article.url} target="_blank">{article.title}</a>
+            </p>
             <h3 className="bold">{article.author}</h3>
             <small>{moment(article.publishedAt).format("DD/MM/YY hh:mm")}</small>
           </div>
           <div className="news-content">
-            <div>
-              <p className="underline">
-                <a href={article.url} target="_blank">{article.title}</a>
-              </p>
-              <span>{article.author}</span>
-            </div>
+            {article.description}
           </div>
           <div className="news-image-container">
-            <img src={article.urlToImage} width="350px" height="300px" alt=""/>
+            <img src={article.image} width="350px" height="300px" alt=""/>
           </div>
         </div>
       ))}

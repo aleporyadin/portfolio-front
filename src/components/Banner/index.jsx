@@ -31,7 +31,7 @@ const Banner = ({name, className, subtitle}) => {
 
       <div className="main-col-3 welcome-user pr-6 flex flex-col items-end">
         <div>
-          <NavLink exact to={Pathname.login} onClick={logout}>
+          <NavLink exact="true" to={Pathname.login} onClick={logout} >
             <Tooltip title="Logout">
               <LogoutIcon className={clsx("overview-icon", "smooth-icon")}/>
             </Tooltip>

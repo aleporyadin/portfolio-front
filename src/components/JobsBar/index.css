@@ -14,7 +14,7 @@
     transition: 1s;
     width: 100%;
     overflow: auto;
-    padding: 0 15px;
+    padding: 10px 15px 5px 20px;
 }
 
 .job-title {

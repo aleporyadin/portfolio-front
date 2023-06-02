@@ -7,7 +7,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <RouteSwitch />
+        <RouteSwitch/>
       </AuthProvider>
     </BrowserRouter>
   );
