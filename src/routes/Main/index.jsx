@@ -9,8 +9,8 @@ export const Main = () => {
     <div className="home-screen">
       <div className="layout-home">
         <Navbar />
-        <div className="content-container gap-4 flex flex-col w-full">
-          <Banner name="Dashboard" />
+        <div className="main-container gap-4 flex flex-col w-full">
+          <Banner name="Dashboard" className="page-banner"/>
           <Outlet />
         </div>
       </div>

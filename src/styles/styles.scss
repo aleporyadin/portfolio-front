@@ -83,16 +83,18 @@
   border-radius: 19px;
   min-width: 88px;
   border: 1px solid theme("colors.secondary.20");
-  overflow: auto;
+  //overflow: auto;
 
 
   .logo-icon {
-    margin: 5px 0 0 10px;
+    margin: 12px 0 0 10px;
+    width:70px;
+    height:70px;
   }
 
   .horizontal-line {
     width: auto;
-    margin: 25px 5px 25px 10px;
+    margin: 15px 5px 25px 10px;
   }
 
   .bottom-container {
@@ -169,7 +171,6 @@
 
 .banner {
   @apply bg-white;
-  padding: 12px;
   border-radius: 16px;
   display: flex;
   align-items: center;

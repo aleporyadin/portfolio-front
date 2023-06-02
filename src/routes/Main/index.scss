@@ -7,10 +7,31 @@
 
 .layout-home {
   display: flex;
-  gap: 12px;
+  align-items: stretch;
+  gap: 15px;
 }
 
-.content-container {
-  flex-grow: 1;
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
   height: calc(100vh - 44px);
+}
+
+.page-banner {
+  grid-area: 1 / 1 / 2 / 7;
+}
+
+.dashboard-news-container {
+  grid-area: 2 / 1 / 7 / 4;
+}
+
+.dashboard-weather-container {
+  grid-area: 2 / 4 / 4 / 7;
+}
+
+.dashboard-jobs-container {
+  grid-area: 4 / 4 / 7 / 7;
 }

@@ -1,6 +1,7 @@
 .weather-container {
     height: 100%;
     width: 100%;
+    margin-top: 10px;
 }
 
 /*.ow-row {*/
@@ -32,36 +33,37 @@
     font-size: 24px;
 }
 
-.ow-ico-current {
-    font-size: 80px;
-    width: 1.1em;
+.current-icon {
+    font-size: 38px;
+    width: 2em;
+}
+
+.sub-icon {
+    font-size: 60px;
+    width: 0.8em;
 }
 
 .temp-current {
-    font-size: 60px;
-    margin: 20px 5%;
-}
-
-.ow-current-desc {
-    line-height: 1.5em;
-}
-
-.ow-forecast-item {
-    float: left;
-    width: calc(25% - 1px);
-    text-align: center;
-    border-right: 1px solid white;
-}
-
-.ow-forecast-item:last-child {
-    border-right: 0;
-}
-
-.ow-forecast-item .ow-ico-forecast {
     font-size: 30px;
-    position: relative;
-    margin: 10px 0;
+    /*margin: 20px 5%;*/
 }
+
+/*.ow-forecast-item {*/
+/*    float: left;*/
+/*    width: calc(25% - 1px);*/
+/*    text-align: center;*/
+/*    border-right: 1px solid white;*/
+/*}*/
+
+/*.ow-forecast-item:last-child {*/
+/*    border-right: 0;*/
+/*}*/
+
+/*.ow-forecast-item .ow-ico-forecast {*/
+/*    font-size: 30px;*/
+/*    position: relative;*/
+/*    margin: 10px 0;*/
+/*}*/
 
 .ow-forecast-item .ow-forecast-temp span {
     display: inline-block;

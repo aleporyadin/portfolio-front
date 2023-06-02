@@ -3,6 +3,7 @@
     overflow: auto;
     padding: 0 15px;
     height: initial;
+    margin-top: 10px;
 }
 
 .jobs-item-container {
@@ -14,9 +15,6 @@
     width: 100%;
     overflow: auto;
     padding: 0 15px;
-    height: initial;
-    display: flex;
-    flex-direction: column;
 }
 
 .job-title {

@@ -9,5 +9,6 @@ export const Pathname = {
   mod: "mod",
   admin: "admin",
   portfolio: "portfolio",
-  account: "account"
+  account: "account",
+  projects: "projects"
 };

@@ -6,9 +6,8 @@ import JobsBar from "../../components/JobsBar";
 
 export const Home = () => {
 
-  return (
-    <div className="dashboard-layout">
-      <div className="dashboard-container-left-side ">
+  return ( <>
+      <div className="dashboard-news-container">
         <h1 className="dashboard-item-header font-semibold text-xl4 ">
           Top News
         </h1>
@@ -26,6 +25,6 @@ export const Home = () => {
         </h1>
         <JobsBar/>
       </div>
-    </div>
+    </>
   );
 };

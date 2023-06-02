@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import AuthService from "../../api/authService";
 import AuthContext from "../../context/AuthContext";
-import { Pathname } from "../../routes";
-import { useNavigate } from "react-router-dom";
+import {Pathname} from "../../routes";
+import {NavLink, useNavigate} from "react-router-dom";
+import {Tooltip} from "@mui/material";
+import {Logout as LogoutIcon} from '@mui/icons-material';
+import clsx from "clsx";
 
-function Banner({name, style, subtitle}) {
+const Banner = ({name, className, subtitle}) => {
   const {currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
   const logout = () => {
@@ -15,14 +18,11 @@ function Banner({name, style, subtitle}) {
   };
 
   return (
-    <div className={classNames("banner", style)} data-testid="banner">
+    <div className={classNames("banner", className)} data-testid="banner">
       <div className="main-col-1 flex flex-grow">
         <h2 className="text-black flex items-center text-xl6 border-r pr-12 mr-12 h-14 border-gray-80 pl-6">{name}</h2>
         <p className="text-black flex items-center">{subtitle}</p>
         <div className="banner-list flex gap-10 flex-grow">
-          {/* <div className="flex-grow flex justify-end items-center">
-              {currentUser?.login}
-            </div> */}
           <h2 className="flex-grow flex justify-end items-center border-r pr-12 mr-12 h-14 border-gray-80 pl-6">
             {currentUser?.login}
           </h2>
@@ -31,24 +31,16 @@ function Banner({name, style, subtitle}) {
 
       <div className="main-col-3 welcome-user pr-6 flex flex-col items-end">
         <div>
-          <button type="button" className="text-blue-10 text-base" onClick={logout}>
-            {"Log Out"}
-          </button>
-        </div>
-        <div>
-          <a href="#" target="_blank" rel="noreferrer" className="text-blue-10 text-base">
-            Help
-          </a>
-        </div>
-        <div>
-          <button type="button" className="text-blue-10 text-base">
-            {"Changelog"}
-          </button>
+          <NavLink exact to={Pathname.login} onClick={logout}>
+            <Tooltip title="Logout">
+              <LogoutIcon className={clsx("overview-icon", "smooth-icon")}/>
+            </Tooltip>
+          </NavLink>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Banner;
 

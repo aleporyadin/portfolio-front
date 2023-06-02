@@ -1,45 +1,54 @@
-import MailIcon from "@mui/icons-material/Mail";
-import { Badge, Divider, IconButton, Tooltip } from "@mui/material";
+import { Divider, Tooltip} from "@mui/material";
 import clsx from "clsx";
-import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
-import AuthService from "../../api/authService";
+import React, {useContext, useState} from "react";
+import {NavLink} from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
-import { useNotificationCenter } from "react-toastify/addons/use-notification-center";
+import {useNotificationCenter} from "react-toastify/addons/use-notification-center";
 import "./index.scss";
-import { Pathname } from "../../routes";
-import { ReactComponent as LogoIcon } from "assets/navbar-logo.svg";
-import { ReactComponent as OverviewIcon } from "assets/dashboard.svg";
-import { ReactComponent as ProductsIcon } from "assets/create_product.svg";
+import {Pathname} from "../../routes";
+import {ReactComponent as LogoIcon} from "assets/navbar-logo.svg";
+import {ReactComponent as OverviewIcon} from "assets/dashboard.svg";
+import {ReactComponent as ProductsIcon} from "assets/create_product.svg";
+import { ReactComponent as UserIcon } from "assets/profile.svg";
+import cn from "classnames";
+import Profile from "../Profile";
 
 function Navbar() {
   const {isAdmin, isModerator, isUser, currentUser} = useContext(AuthContext);
   const {unreadCount} = useNotificationCenter();
+  const [showProfile, setShowProfile] = useState(false);
+
+  const toggleProfile = () => {
+    setShowProfile(!showProfile);
+  };
 
   return (
-    <div className={"nav-bar"} data-testid="nav-bar">
+    <div className="nav-bar" data-testid="nav-bar">
       <LogoIcon className="logo-icon"/>
       <Divider className="horizontal-line"/>
-      <div className="nav-bundle flex justify-between flex-col	">
-        <div className="flex flex-col items-center">
-          <NavLink exact="true" to={Pathname.home}>
-            <Tooltip title="Dashboard">
-              <OverviewIcon className={clsx("overview-icon", "smooth-icon")}/>
-            </Tooltip>
-          </NavLink>
-          <NavLink exact to={Pathname.portfolio}>
-            <Tooltip title="Create Products">
-              <ProductsIcon className={clsx("overview-icon", "smooth-icon")}/>
-            </Tooltip>
-          </NavLink>
-          <NavLink exact to={Pathname.account}>
-            <Tooltip title="Create Products">
-              <ProductsIcon className={clsx("overview-icon", "smooth-icon")}/>
-            </Tooltip>
-          </NavLink>
+      <div className="nav-bundle flex flex-col items-center">
+        <NavLink exact="true" to={Pathname.home}>
+          <Tooltip title="Dashboard">
+            <OverviewIcon className={clsx("overview-icon", "smooth-icon")}/>
+          </Tooltip>
+        </NavLink>
+        <NavLink exact to={Pathname.projects}>
+          <Tooltip title="Check Projects">
+            <ProductsIcon className={clsx("overview-icon", "smooth-icon")}/>
+          </Tooltip>
+        </NavLink>
+        <div className="nav-item-popup-container">
+          <Tooltip title="Profile" className="cursor-pointer mb-2">
+            <UserIcon onClick={toggleProfile} className={cn({
+              "overview-icon": true,
+              "smooth-icon": true,
+              "activate-icon": showProfile})}/>
+          </Tooltip>
         </div>
       </div>
+      {showProfile && <Profile isOpen={showProfile} onClose={toggleProfile}/>}
     </div>
+
     // <div className="navbar-container">
     //   <div className="navbar-logo col-start-1 justify-self-end">
     //     <Link to="/" className="text-white font-bold text-xl4">Logo</Link>
