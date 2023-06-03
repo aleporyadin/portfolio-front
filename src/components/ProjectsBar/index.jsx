@@ -2,7 +2,7 @@ import React from "react";
 import "./index.css";
 
 const ProjectsBar = ({projectsList, handlers}) => {
-  const {handleDownload, handleDelete, handleUpload, handleFileChange, setSelectedFile, selectedFile} = handlers;
+  const {setSelectedFile, selectedFile} = handlers;
   const setStyleTransaction = (item) => {
     return (selectedFile === item) ? "selected-file" : "";
   };
@@ -20,12 +20,7 @@ const ProjectsBar = ({projectsList, handlers}) => {
           </li>
         ))}
       </ul>
-      <div>
-        <input type="file" onChange={handleFileChange}/>
-        <button onClick={handleUpload}>Upload</button>
-        {/*<button onClick={() => handleDownload()}>Download</button>*/}
-        {/*<button onClick={() => handleDelete(file)}>Delete</button>*/}
-      </div>
+
     </div>
   );
 };

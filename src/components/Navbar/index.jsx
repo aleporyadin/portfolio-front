@@ -11,7 +11,7 @@ import {ReactComponent as OverviewIcon} from "assets/dashboard.svg";
 import {ReactComponent as ProductsIcon} from "assets/create_product.svg";
 import { ReactComponent as UserIcon } from "assets/profile.svg";
 import cn from "classnames";
-import Profile from "../Profile";
+import Profile from "../Modal/Profile";
 
 function Navbar() {
   const {isAdmin, isModerator, isUser, currentUser} = useContext(AuthContext);

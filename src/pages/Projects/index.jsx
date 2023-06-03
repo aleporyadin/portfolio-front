@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./index.css";
 import AddIcon from "@mui/icons-material/Add";
 import ProjectsBar from "../../components/ProjectsBar";
@@ -13,7 +13,9 @@ export const Projects = () => {
     useEffect(() => {
       console.log(currentUser);
 
-      if (!currentUser.id) { return; }
+      if (!currentUser.id) {
+        return;
+      }
       ProjectService.getFiles(currentUser.id)
         .then((response) => {
 
@@ -41,8 +43,12 @@ export const Projects = () => {
 
     const handleDelete = (filename) => {
       ProjectService.deleteFile(currentUser.id, 1);
-
     };
+
+    const handleRename = (filename) => {
+      ProjectService.renameFile(currentUser.id, 1);
+    };
+
     const handlers = {
       handleDelete, handleDownload, handleUpload, handleFileChange, setSelectedFile, selectedFile
     };
@@ -58,28 +64,33 @@ export const Projects = () => {
           <h1 className="dashboard-item-header font-semibold text-xl4 ">
             Action for projects
           </h1>
+          <div>
+            <button onClick={handleUpload}>Upload</button>
+            {/*<button onClick={() => handleDownload()}>Download</button>*/}
+            {/*<button onClick={() => handleDelete(file)}>Delete</button>*/}
+          </div>
           <div className="grid grid-rows-1 grid-cols-4 gap-3 ">
             <div className="flex flex-col items-center	">
               <div className="add-btn flex flex-col justify-center items-center hover:border-b-gray-70">
-                <AddIcon/>
+                <AddIcon onClick={handleUpload}/>
               </div>
-              <span>Upload Project </span>
+              <span>Upload</span>
             </div>
             <div className=" flex flex-col items-center	">
               <div className="add-btn flex flex-col justify-center items-center">
-                <AddIcon/>
+                <AddIcon onClick={handleDownload}/>
               </div>
-              <span>Download project</span>
+              <span>Download</span>
             </div>
             <div className=" flex flex-col items-center	">
               <div className="add-btn flex flex-col justify-center items-center">
-                <AddIcon/>
+                <AddIcon onClick={() => handleDelete(selectedFile)}/>
               </div>
-              <span>Delete Selected Project</span>
+              <span>Delete</span>
             </div>
             <div className=" flex flex-col items-center">
               <div className="add-btn flex flex-col justify-center items-center">
-                <AddIcon/>
+                <AddIcon onClick={handleRename}/>
               </div>
               <span> Rename Selected Project</span>
             </div>

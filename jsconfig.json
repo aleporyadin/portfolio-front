@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "es6",
     "baseUrl": "src",
+    "jsx": "react-jsx",
     "paths": {
       "*": [
-        "src/*"
+        "src/**"
       ]
     },
     "experimentalDecorators": true
@@ -15,6 +16,7 @@
   "exclude": [
     "node_modules",
     ".idea",
-    ".git"
+    ".git",
+    "build"
   ]
 }

@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from "react";
-import WeatherService from "../../api/weatherService";
 import "./index.css";
-import moment from "moment/moment";
-import {Button} from "@mui/material";
 import JobsService from "../../api/jobsService";
+import {Button, Chip} from "@mui/material";
 
 const JobsBar = () => {
   const [data, setData] = useState({
@@ -42,7 +40,8 @@ const JobsBar = () => {
   const handleLoadMore = () => {
     getJobs();
   };
-
+  useEffect(() => {
+  }, [data]);
   return (
     <div className="jobs-container ">
       {data.jobs.length && data.jobs.map((job, key) => (
@@ -57,15 +56,16 @@ const JobsBar = () => {
           <div className="col-start-2 row-start-2">
             Remote: {job.remove ? "YES" : "NO"}
           </div>
-          {job.job_types.length > 0 &&
-            <div className="col-start-3 row-span-full">
-              <span>Tags:</span>
-              {job.job_types.map((type, key) => {
-                return <span key={key} className="bg-gray rounded-xl px-1.5 py-0.5 mr-2 mb-0.5">{type}</span>;
-              })
-              }
-            </div>
-          }
+          <div className="col-start-3 row-span-full grid col-start-2 grid-cols-3 border-b-2 border-gray-60">
+            <span>Tags:</span>
+            <span className="col-span-2 break-all mb-1">
+            {(job?.job_types && job.job_types.length !== 0)
+              ? job.job_types.map((type, index) =>
+                <Chip label={type} key={index} className="ml-1 mb-1"/>)
+              : "n/a"
+            }
+          </span>
+          </div>
         </div>
       ))}
       {data.loading && <p>Loading...</p>}

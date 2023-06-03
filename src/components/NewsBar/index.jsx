@@ -10,7 +10,7 @@ export const NewsBar = () => {
     count: 0,
     loading: true,
     error: "",
-    page: 1,
+    page: 0,
     size: 10
   });
 
@@ -18,12 +18,12 @@ export const NewsBar = () => {
     setData({...data, loading: true});
     try {
       const response = await NewsService.getNews({page: data.page, size: data.size}); //Promise;//
-
-      if (response.articles.length) {
+      const content = response.data.content;
+      if (content.length) {
         setData({
           ...data,
-          news: [...data.news, ...response.articles],
-          count: response.totalResults,
+          news: [...data.news, ...content],
+          last: content.last,
           loading: false,
           page: data.page + 1
         });
