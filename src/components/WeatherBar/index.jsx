@@ -24,8 +24,8 @@ const WeatherBar = () => {
   return (
     <div className="weather-container">
       {weatherData &&
-        <div className="flex">
-          <div className="grid grid-rows-3 grid-cols-2 float-left">
+        <div className="flex flex-wrap">
+          <div className="grid grid-rows-2 grid-cols-2 float-left">
             <img src={weatherData.current.condition.icon} className="current-icon pull-left"
                  alt={weatherData.current.condition.text}></img>
             <h3 className="font-semibold text-xl4">Lviv</h3>

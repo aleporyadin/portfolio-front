@@ -6,7 +6,7 @@ import AuthContext from "../../context/AuthContext";
 import {Pathname} from "../../routes";
 import {NavLink, useNavigate} from "react-router-dom";
 import {Avatar, Tooltip} from "@mui/material";
-import {Logout as LogoutIcon} from '@mui/icons-material';
+import {Logout as LogoutIcon} from "@mui/icons-material";
 import clsx from "clsx";
 
 const Banner = ({name, className, subtitle}) => {
@@ -20,12 +20,13 @@ const Banner = ({name, className, subtitle}) => {
   console.log(currentUser);
   return (
     <div className={classNames("banner", className)} data-testid="banner">
-      <div className="main-col-1 flex flex-grow">
-        <h2 className="text-black flex items-center text-xl6 border-r pr-12 mr-8 h-14 border-gray-80 pl-6">{name}</h2>
-        <p className="text-black">
-          <span className=" text-xl2">Welcome! </span>
-          <div className="flex items-center ml-5 ">
-            <Avatar alt="Remy Sharp" src="user.svg"/>
+      <div className="grid grid-rows-2 grid-cols-2 gap-1.5 items-center">
+        <div className="flex justify-center h-full items-center row-span-2 border-gray-80 border-r pr-12 mr-8  pl-6">
+          <h2 className="text-black flex items-center text-xl6  ">{name}</h2>
+        </div>
+        <p className="text-black col-start-2 row-span-2">
+          <div className="flex items-center ml-2 ">
+            <Avatar alt="Remy Sharp" src={currentUser.avatar || "user.svg"} sx={{width: 48, height: 48}}/>
             <span className="ml-5 text-xl">{currentUser?.username}</span>
           </div>
         </p>
@@ -34,8 +35,7 @@ const Banner = ({name, className, subtitle}) => {
         </div>
       </div>
 
-      <div className=" main-col-3 welcome-user pr-6 flex flex-col items-end">
-
+      <div className="logout-btn border-gray-80 border-l pr-10 pl-6">
         <div>
           <NavLink exact=" true" to={Pathname.login} onClick={logout}>
             <Tooltip title=" Logout">

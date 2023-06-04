@@ -22,16 +22,20 @@ const uploadFile = async (userId, formData) => {
 };
 
 const downloadFile = async (userId, fileId) => {
+  console.log(userId, fileId);
   try {
     const response = await axios.get(FILE_DOWNLOAD(userId, fileId), {
-      responseType: "blob"
+      responseType: 'blob', // Ensure the response is treated as a Blob
     });
+
+    // Determine the file type from the response headers
+    const contentType = response.headers['content-type'];
 
     // Create a temporary download link
     const downloadUrl = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement("a");
     link.href = downloadUrl;
-    link.setAttribute("download", response.headers["content-disposition"]);
+    link.setAttribute('download', `file.${getFileExtension(contentType)}`);
     document.body.appendChild(link);
     link.click();
 
@@ -39,10 +43,22 @@ const downloadFile = async (userId, fileId) => {
     document.body.removeChild(link);
     window.URL.revokeObjectURL(downloadUrl);
   } catch (e) {
-    console.error("Failed to download file:", e);
+    console.error('Failed to download file:', e);
     await Promise.reject(e);
   }
 };
+
+const getFileExtension = (contentType) => {
+  switch (contentType) {
+    case 'image/png':
+      return 'png';
+    case 'text/plain':
+      return 'txt';
+    default:
+      return 'file';
+  }
+};
+
 
 const deleteFile = async (userId, fileId) => {
   try {

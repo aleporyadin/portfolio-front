@@ -1,22 +1,22 @@
 import React, {useContext, useState} from "react";
-import {Box, Fade, Modal, Typography} from "@mui/material";
-import Backdrop from '@mui/material/Backdrop';
+import {Avatar, Box, Fade, Modal, Typography} from "@mui/material";
+import Backdrop from "@mui/material/Backdrop";
 import "./index.css";
 import AuthContext from "../../../context/AuthContext";
 
 const style = {
-  position: 'absolute',
-  top: '20%',
-  left: '30%',
+  position: "absolute",
+  top: "25%",
+  left: "36%",
   width: 600,
-  bgcolor: 'background.paper',
+  bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: "15px"
 };
 
 
 export default function Profile({isOpen, onClose}) {
-  const {currentUser }= useContext(AuthContext);
+  const {currentUser} = useContext(AuthContext);
   return (
     <Modal
       open={isOpen}
@@ -31,8 +31,8 @@ export default function Profile({isOpen, onClose}) {
             <div className="row-span-2 col-span-1 col-sm-4 bg-c-lite-green user-profile">
               <div className="card-block text-center text-white">
                 <div className="flex justify-center">
-                  <img src={currentUser.avatar || "/user.svg"} className="img-radius"
-                       alt="User-Profile-Image"/>
+                  <Avatar alt={currentUser.username} src={currentUser.avatar || "user.svg"} sx={{width: 48, height: 48}}/>
+
                 </div>
                 <h6 className="f-w-600 text-xl2">{currentUser.first_name} {currentUser.last_name}</h6>
                 <p className="text-xl">@{currentUser.username}</p>
@@ -45,7 +45,7 @@ export default function Profile({isOpen, onClose}) {
                 <div className="row">
                   <div className="col-sm-6">
                     <p className="m-b-10 f-w-600">Email</p>
-                    <h6 className="text-muted f-w-400">rntng@gmail.com</h6>
+                    <h6 className="text-muted f-w-400">{currentUser.email}</h6>
                   </div>
                   <div className="col-sm-6">
                     <p className="m-b-10 f-w-600">Phone</p>

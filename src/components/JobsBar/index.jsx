@@ -48,7 +48,7 @@ const JobsBar = () => {
         <div key={key} className="jobs-item-container grid grid-rows-2 grid-cols-3">
           <div className="job-company flex flex-col row-start-1 col-span-2">
             <span className="font-semibold">{job.company_name}</span>
-            <a href={job.url} className="cursor-pointer underline font-bold">  {job.title}</a>
+            <a href={job.url} target="_blank" className="cursor-pointer underline font-bold">  {job.title}</a>
           </div>
           <div className="col-start-1 row-start-2  items-center">
             Location: {job.location}
@@ -56,7 +56,7 @@ const JobsBar = () => {
           <div className="col-start-2 row-start-2">
             Remote: {job.remove ? "YES" : "NO"}
           </div>
-          <div className="col-start-3 row-span-full grid col-start-2 grid-cols-3 border-b-2 border-gray-60">
+          <div className="col-start-3 row-span-full grid col-start-2 grid-cols-3">
             <span>Tags:</span>
             <span className="col-span-2 break-all mb-1">
             {(job?.job_types && job.job_types.length !== 0)

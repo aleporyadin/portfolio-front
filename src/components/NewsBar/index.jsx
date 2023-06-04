@@ -1,6 +1,6 @@
-import { Box, Button, Grid } from "@mui/material";
+import {Box, Button, Grid} from "@mui/material";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./index.css";
 import NewsService from "../../api/newsService";
 
@@ -47,27 +47,56 @@ export const NewsBar = () => {
   return (
     <div className="news-container">
       {data.news.map((article, index) => (
-        <div key={index} className="news-item-container">
-          <div className="news-header flex flex-col">
-            <p className="underline">
-              <a href={article.url} target="_blank">{article.title}</a>
-            </p>
-            <h3 className="bold">{article.author}</h3>
-            <small>{moment(article.publishedAt).format("DD/MM/YY hh:mm")}</small>
-          </div>
-          <div className="news-content">
-            {article.description}
-          </div>
-          <div className="news-image-container">
-            <img src={article.image} width="350px" height="300px" alt=""/>
+        <div key={index} className="projcard projcard-blue">
+          <div className="projcard-innerbox">
+            <img className="projcard-img" src={article.image} alt="news-image"/>
+            <div className="projcard-textbox">
+              <div className="projcard-title">{article.title}</div>
+              <div className="projcard-subtitle">{moment(article.publishedAt).format("DD/MM/YY hh:mm")}</div>
+              <div className="projcard-bar"></div>
+              <div className="projcard-description">
+                {article.description}
+              </div>
+              <div className="read-more">
+                <p>
+                  <a href={article.url} target="_blank">Read More</a>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       ))}
+
       {data.loading && <p>Loading...</p>}
       {data.error && <p>{data.error}</p>}
       {!data.loading && !data.error && (
-        <Button onClick={handleLoadMore}>Load More</Button>
+        <div className="w-full flex justify-center">
+          <Button onClick={handleLoadMore}>Load More</Button></div>
       )}
     </div>
+    // <div className="news-container">
+    //   {data.news.map((article, index) => (
+    //     <div key={index} className="news-item-container">
+    //       <div className="news-header flex flex-col">
+    //         <p className="underline">
+    //           <a href={article.url} target="_blank">{article.title}</a>
+    //         </p>
+    //         <h3 className="bold"></h3>
+    //         <small></small>
+    //       </div>
+    //       <div className="news-content">
+    //         {article.description}
+    //       </div>
+    //       <div className="news-image-container">
+    //         <img src={article.image} width="350px" height="300px" alt=""/>
+    //       </div>
+    //     </div>
+    //   ))}
+    //   {data.loading && <p>Loading...</p>}
+    //   {data.error && <p>{data.error}</p>}
+    //   {!data.loading && !data.error && (
+    //     <Button onClick={handleLoadMore}>Load More</Button>
+    //   )}
+    // </div>
   );
 };

@@ -4,6 +4,19 @@ import AddIcon from "@mui/icons-material/Add";
 import ProjectsBar from "../../components/ProjectsBar";
 import ProjectService from "../../api/projectsService";
 import AuthContext from "../../context/AuthContext";
+import {Button, Fab, Input} from "@mui/material";
+
+const style = {
+  backgroundColor: "rgba(112, 181, 255, 0.84)",
+  borderRadius: "20px",
+  height: "70px",
+  width: "70px",
+  boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
+  transition: "all .2s ease-in-out",
+  hover: {
+    backgroundColor: "yellow"
+  }
+};
 
 export const Projects = () => {
     const {currentUser} = useContext(AuthContext);
@@ -26,19 +39,14 @@ export const Projects = () => {
       });
     }, [currentUser]);
     console.log(fileList);
-    const handleFileChange = (event) => {
-      setSelectedFile(event.target.files[0]);
-    };
-
-    const handleUpload = () => {
+    const handleUpload = (e) => {
       const formData = new FormData();
-      formData.append("file", selectedFile);
+      formData.append("file", e.target.files[0]);
       ProjectService.uploadFile(currentUser.id, formData);
     };
 
     const handleDownload = (filename) => {
-      ProjectService.downloadFile(currentUser.id, 1);
-
+      ProjectService.downloadFile(currentUser.id, selectedFile.id);
     };
 
     const handleDelete = (filename) => {
@@ -50,7 +58,7 @@ export const Projects = () => {
     };
 
     const handlers = {
-      handleDelete, handleDownload, handleUpload, handleFileChange, setSelectedFile, selectedFile
+      handleDelete, handleDownload, handleUpload, setSelectedFile, selectedFile
     };
 
     return (<>
@@ -64,35 +72,35 @@ export const Projects = () => {
           <h1 className="dashboard-item-header font-semibold text-xl4 ">
             Action for projects
           </h1>
-          <div>
-            <button onClick={handleUpload}>Upload</button>
-            {/*<button onClick={() => handleDownload()}>Download</button>*/}
-            {/*<button onClick={() => handleDelete(file)}>Delete</button>*/}
-          </div>
-          <div className="grid grid-rows-1 grid-cols-4 gap-3 ">
+
+          <div className="grid grid-rows-1 grid-cols-4 gap-3 mt-2 h-full w-full items-center ">
             <div className="flex flex-col items-center	">
-              <div className="add-btn flex flex-col justify-center items-center hover:border-b-gray-70">
-                <AddIcon onClick={handleUpload}/>
-              </div>
+              <label htmlFor="upload-photo" className="flex flex-col items-center mb-1">
+                <input style={{display: "none"}} id="upload-photo" name="file" type="file"
+                       onChange={(e) => handleUpload(e)}/>
+                <div className="add-btn">
+                  <AddIcon/>
+                </div>
+              </label>
               <span>Upload</span>
             </div>
             <div className=" flex flex-col items-center	">
-              <div className="add-btn flex flex-col justify-center items-center">
+              <div className="add-btn">
                 <AddIcon onClick={handleDownload}/>
               </div>
               <span>Download</span>
             </div>
             <div className=" flex flex-col items-center	">
-              <div className="add-btn flex flex-col justify-center items-center">
+              <div className="add-btn">
                 <AddIcon onClick={() => handleDelete(selectedFile)}/>
               </div>
               <span>Delete</span>
             </div>
-            <div className=" flex flex-col items-center">
-              <div className="add-btn flex flex-col justify-center items-center">
+            <div className="flex flex-col items-center">
+              <div className="add-btn">
                 <AddIcon onClick={handleRename}/>
               </div>
-              <span> Rename Selected Project</span>
+              <span>Rename</span>
             </div>
           </div>
         </div>

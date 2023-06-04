@@ -147,3 +147,10 @@ code {
 .w-10 {
     width: 10%;
 }
+
+.logout-btn {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
