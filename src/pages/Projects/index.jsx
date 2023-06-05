@@ -67,25 +67,31 @@ export const Projects = () => {
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
       const response = await ProjectService.uploadFile(currentUser.id, formData);
-      if (response.status === 200) {
-        toast.success(response.data);
-      }
+      checkResponse(response);
       setTimeout(() => getProjects(), 3000);
     };
 
-    const handleDownload = () => {
-      if (isFileSelected())
-        ProjectService.downloadFile(currentUser.id, selectedFile.id);
+    const handleDownload = async () => {
+      if (isFileSelected()) {
+        const response = await ProjectService.downloadFile(currentUser.id, selectedFile.id);
+        checkResponse(response);
+      }
     };
 
-    const handleDelete = () => {
-      if (isFileSelected())
-        ProjectService.deleteFile(currentUser.id, selectedFile.id);
+    const handleDelete = async () => {
+      if (isFileSelected()) {
+        const response = await ProjectService.deleteFile(currentUser.id, selectedFile.id);
+        checkResponse(response);
+        window.location.reload();
+      }
     };
 
-    const handleRename = () => {
-      if (isFileSelected())
-        ProjectService.renameFile(currentUser.id, selectedFile.id);
+    const handleRename = async () => {
+      if (isFileSelected()) {
+        const response = await ProjectService.renameFile(currentUser.id, selectedFile.id);
+        checkResponse(response);
+        window.location.reload();
+      }
     };
 
     const isFileSelected = () => {
@@ -94,6 +100,15 @@ export const Projects = () => {
         return false;
       }
       return true;
+    };
+
+    const checkResponse = (response) => {
+      console.log(response);
+      if (response.status === 200) {
+        toast.success("Successfully!");
+      } else if (response.status === 216) {
+        toast.error(response.data);
+      }
     };
 
     const handlers = {

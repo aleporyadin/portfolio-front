@@ -12,11 +12,10 @@ export default function RouteSwitch() {
   const navigate = useNavigate();
   const {currentUser, setCurrentUser} = useContext(AuthContext);
 
-  const checkUser = () => {
+  const checkUser = async () => {
     if (isSignedIn()) {
       if (!isEmpty(currentUser)) return;
-      const user = AuthService.getCurrentUser();
-      console.log(user);
+      const user = await AuthService.getCurrentUser();
       if (user) {
         setCurrentUser(user);
       } else {

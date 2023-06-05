@@ -1,11 +1,13 @@
 import axios from "../utils/axiosClient";
 import apiEndpoints from "./apiEndpoints";
 import {CANNOT_FIND_TOKEN, MESSAGE_CONNECTED_FAILED_ERROR} from "../constants/messages";
+import LocalStorageUtil from "../utils/LocalStorage";
 
 const {
   LOGIN,
   AUTH_URL,
   REGISTER,
+  USER,
   USER_AVATAR
 } = apiEndpoints;
 const login = async (username, password) => {
@@ -13,24 +15,20 @@ const login = async (username, password) => {
     const data = {username, password};
     const request = AUTH_URL + LOGIN;
     const response = await axios.post(request, data);
-
     if (response.data.token) {
-      const {token, avatarPath, ...userData} = response.data;
+      const {avatarPath} = response.data;
       if (avatarPath) {
-        const avatarResponse = await axios.get(USER_AVATAR(avatarPath));
-        console.log(avatarResponse);
+        const avatarResponse = await axios.get(USER_AVATAR(avatarPath), {responseType: 'blob'});
         if (avatarResponse) {
-          const avatarBlob = await avatarResponse.data.blob();
-          userData.avatarUrl = URL.createObjectURL(avatarBlob);
-          console.log(avatarResponse, avatarBlob);
+          response.data.avatarUrl = URL.createObjectURL(avatarResponse.data);
         }
       }
-      sessionStorage.setItem("user", JSON.stringify(userData));
     } else {
       console.log(CANNOT_FIND_TOKEN);
-      await Promise.reject("Undefined token!");
+      await Promise.reject('Undefined token!');
     }
-
+    LocalStorageUtil.setItem("ebotnya", response.data.token);
+    sessionStorage.setItem("user", JSON.stringify(response.data));
     return response.data;
   } catch (e) {
     console.log(MESSAGE_CONNECTED_FAILED_ERROR(e));
@@ -41,7 +39,6 @@ const login = async (username, password) => {
 
 const logout = () => {
   sessionStorage.removeItem("user");
-
 };
 
 const register = async (formData) => {
@@ -65,8 +62,32 @@ const register = async (formData) => {
   }
 };
 
-const getCurrentUser = () => {
-  return JSON.parse(sessionStorage.getItem("user"));
+const getCurrentUser = async () => {
+  try {
+    const token = LocalStorageUtil.getItem('ebotnya');
+    if (token) {
+      const config = {
+        headers: {
+          Authorization: `SOUL ${token}`
+        }
+      };
+      const response = await axios.get(AUTH_URL + USER, config);
+      const {avatarPath} = response.data;
+      if (avatarPath) {
+        const avatarResponse = await axios.get(USER_AVATAR(avatarPath), {responseType: 'blob'});
+        if (avatarResponse) {
+          response.data.avatarUrl = URL.createObjectURL(avatarResponse.data);
+        }
+      }
+      return response.data;
+    } else {
+      console.log(CANNOT_FIND_TOKEN);
+      await Promise.reject('Undefined token!');
+    }
+  } catch (e) {
+    console.log(MESSAGE_CONNECTED_FAILED_ERROR(e));
+    await Promise.reject(e);
+  }
 };
 
 const AuthService = {

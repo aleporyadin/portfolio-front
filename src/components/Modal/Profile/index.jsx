@@ -1,5 +1,5 @@
-import React, {useContext, useState} from "react";
-import {Avatar, Box, Fade, Modal, Typography} from "@mui/material";
+import React, {useContext} from "react";
+import {Avatar, Box, Fade, Modal} from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import "./index.css";
 import AuthContext from "../../../context/AuthContext";
@@ -31,8 +31,7 @@ export default function Profile({isOpen, onClose}) {
             <div className="row-span-2 col-span-1 col-sm-4 bg-c-lite-green user-profile">
               <div className="card-block text-center text-white">
                 <div className="flex justify-center">
-                  <Avatar alt={currentUser.username} src={currentUser.avatar || "user.svg"} sx={{width: 48, height: 48}}/>
-
+                  <Avatar alt={currentUser.username} src={currentUser.avatarUrl} sx={{width: '4vw', height: '4vw'}}/>
                 </div>
                 <h6 className="f-w-600 text-xl2">{currentUser.first_name} {currentUser.last_name}</h6>
                 <p className="text-xl">@{currentUser.username}</p>

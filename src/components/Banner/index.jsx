@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import AuthService from "../../api/authService";
@@ -16,22 +16,21 @@ const Banner = ({name, className, subtitle}) => {
     AuthService.logout();
     navigate(Pathname.login);
   };
+  useEffect(() => {
+  }, [currentUser]);
 
-  console.log(currentUser);
   return (
     <div className={classNames("banner", className)} data-testid="banner">
       <div className="grid grid-rows-2 grid-cols-2 gap-1.5 items-center">
         <div className="flex justify-center h-full items-center row-span-2 border-gray-80 border-r pr-12 mr-8  pl-6">
-          <h2 className="text-black flex items-center text-xl6  ">{name}</h2>
+          <h2 className="text-black flex items-center text-xl6">{name}</h2>
         </div>
-        <p className="text-black col-start-2 row-span-2">
+        <div className="text-black col-start-2 row-span-2">
           <div className="flex items-center ml-2 ">
-            <Avatar alt="Remy Sharp" src={currentUser.avatarUrl || "user.svg"} sx={{width: 48, height: 48}}/>
-            <img src={currentUser.avatarUrl}/>
-
-            <span className="ml-5 text-xl">{currentUser?.username}</span>
+            <Avatar alt={currentUser.username} src={currentUser.avatarUrl} sx={{width: '4vw', height: '4vw'}}/>
+            <span className="ml-5 text-xl6">{currentUser?.username}</span>
           </div>
-        </p>
+        </div>
         <div className="banner-list flex gap-10 flex-grow">
 
         </div>
