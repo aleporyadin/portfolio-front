@@ -12,7 +12,7 @@ const apiEndpoints = {
   TEST_URL: "api/test/",
 
   FILE_UPLOAD: (userId) => { return `api/files/${userId}`;},
-  FILE_LIST: (userId) => { return `api/files/${userId}`;},
+  FILE_LIST: (userId, params='') => { return `api/files/${userId}`+params;},
   FILE_DOWNLOAD: (userId, fileId) => { return `api/files/${userId}/${fileId}`;},
   FILE_DELETE: (userId, fileId) => { return `api/files/${userId}/${fileId}`;},
   FILE_RENAME: (userId, fileId, newName) => { return `api/files/${userId}/${fileId}?newName=${newName}`;},

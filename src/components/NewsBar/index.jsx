@@ -1,4 +1,4 @@
-import {Box, Button, Grid} from "@mui/material";
+import {Box, Button, CircularProgress, Grid} from "@mui/material";
 import moment from "moment";
 import React, {useEffect, useState} from "react";
 import "./index.css";
@@ -66,13 +66,14 @@ export const NewsBar = () => {
           </div>
         </div>
       ))}
+      <div className="w-full flex justify-center">
+        {data.loading && <CircularProgress/>}
+        {data.error && <p>{data.error}</p>}
+        {!data.loading && !data.error && (
 
-      {data.loading && <p>Loading...</p>}
-      {data.error && <p>{data.error}</p>}
-      {!data.loading && !data.error && (
-        <div className="w-full flex justify-center">
-          <Button onClick={handleLoadMore}>Load More</Button></div>
-      )}
+          <Button onClick={handleLoadMore}>Load More</Button>
+        )}
+      </div>
     </div>
     // <div className="news-container">
     //   {data.news.map((article, index) => (

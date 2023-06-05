@@ -1,11 +1,13 @@
 import apiEndpoints from "./apiEndpoints";
 import axios from "../utils/axiosClient";
+import {queryParamsToQueryString} from "../utils/utils";
 
 const {FILE_DELETE, FILE_DOWNLOAD, FILE_UPLOAD, FILE_LIST, FILE_RENAME} = apiEndpoints;
-const getFiles = async (userId) => {
+const getFiles = async ({userId, page, size}) => {
   console.log(userId);
   try {
-    return await axios.get(FILE_LIST(userId));
+    const query = queryParamsToQueryString({page, size});
+    return await axios.get(FILE_LIST(userId, query));
   } catch (e) {
     console.log(e);
     await Promise.reject(e);
@@ -22,13 +24,10 @@ const uploadFile = async (userId, formData) => {
 };
 
 const downloadFile = async (userId, fileId) => {
-  console.log(userId, fileId);
   try {
     const response = await axios.get(FILE_DOWNLOAD(userId, fileId), {
-      responseType: 'blob', // Ensure the response is treated as a Blob
+      responseType: 'blob' // Ensure the response is treated as a Blob
     });
-
-    // Determine the file type from the response headers
     const contentType = response.headers['content-type'];
 
     // Create a temporary download link

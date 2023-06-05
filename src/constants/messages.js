@@ -9,3 +9,5 @@ export const MESSAGE_CONNECTED_FAILED_ERROR = (mess = "") => {
 export const CANNOT_FIND_TOKEN = () => {
   return `Cannot find authentication token`;
 };
+
+export const CANNOT_LOADING_PROJECTS = "Cannot loading projects...";
