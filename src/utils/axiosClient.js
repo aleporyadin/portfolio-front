@@ -70,8 +70,6 @@ axios.interceptors.response.use(
                 } else if (error.response.status === 400) {
                     toast.error(message);
                 }
-            } else {
-                toast.error("Unknown error");
             }
             console.log("error", error);
         }

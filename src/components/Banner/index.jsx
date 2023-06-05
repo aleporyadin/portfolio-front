@@ -26,7 +26,9 @@ const Banner = ({name, className, subtitle}) => {
         </div>
         <p className="text-black col-start-2 row-span-2">
           <div className="flex items-center ml-2 ">
-            <Avatar alt="Remy Sharp" src={currentUser.avatar || "user.svg"} sx={{width: 48, height: 48}}/>
+            <Avatar alt="Remy Sharp" src={currentUser.avatarUrl || "user.svg"} sx={{width: 48, height: 48}}/>
+            <img src={currentUser.avatarUrl}/>
+
             <span className="ml-5 text-xl">{currentUser?.username}</span>
           </div>
         </p>
