@@ -66,7 +66,7 @@ select:focus {
 .tippy-box {
   background: #ffffff;
   border: 1px solid #bbbdbf;
-  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.12);
   // border-radius: 0px 17px 17px 17px;
   @apply rounded-xl;
   cursor: text !important;

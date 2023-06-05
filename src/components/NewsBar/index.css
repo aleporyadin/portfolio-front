@@ -189,9 +189,6 @@
 .projcard-grey .projcard-bar { background-color: #424242; }
 .projcard-grey::before { background-image: linear-gradient(-70deg, #424242, transparent 50%); }
 .projcard-grey:nth-child(2n)::before { background-image: linear-gradient(-250deg, #424242, transparent 50%); }
-.projcard-customcolor .projcard-bar { background-color: var(--projcard-color); }
-.projcard-customcolor::before { background-image: linear-gradient(-70deg, var(--projcard-color), transparent 50%); }
-.projcard-customcolor:nth-child(2n)::before { background-image: linear-gradient(-250deg, var(--projcard-color), transparent 50%); }
 .projcard-description {
   z-index: 10;
   font-size: 15px;

@@ -59,45 +59,22 @@ export const NewsBar = () => {
               </div>
               <div className="read-more">
                 <p>
-                  <a href={article.url} target="_blank">Read More</a>
+                  <a href={article.url} target="_blank" rel="noreferrer">Read More</a>
                 </p>
               </div>
             </div>
           </div>
         </div>
       ))}
-      <div className="w-full flex justify-center">
+      {!data.last &&
+        <div className="w-full flex justify-center">
         {data.loading && <CircularProgress/>}
         {data.error && <p>{data.error}</p>}
         {!data.loading && !data.error && (
-
           <Button onClick={handleLoadMore}>Load More</Button>
         )}
       </div>
+      }
     </div>
-    // <div className="news-container">
-    //   {data.news.map((article, index) => (
-    //     <div key={index} className="news-item-container">
-    //       <div className="news-header flex flex-col">
-    //         <p className="underline">
-    //           <a href={article.url} target="_blank">{article.title}</a>
-    //         </p>
-    //         <h3 className="bold"></h3>
-    //         <small></small>
-    //       </div>
-    //       <div className="news-content">
-    //         {article.description}
-    //       </div>
-    //       <div className="news-image-container">
-    //         <img src={article.image} width="350px" height="300px" alt=""/>
-    //       </div>
-    //     </div>
-    //   ))}
-    //   {data.loading && <p>Loading...</p>}
-    //   {data.error && <p>{data.error}</p>}
-    //   {!data.loading && !data.error && (
-    //     <Button onClick={handleLoadMore}>Load More</Button>
-    //   )}
-    // </div>
   );
 };

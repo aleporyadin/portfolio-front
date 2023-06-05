@@ -1,13 +1,13 @@
-import React, {useContext, useState} from "react";
-import {Avatar, Box, Fade, Modal, Typography} from "@mui/material";
+import React, {useContext} from "react";
+import {Avatar, Box, Fade, Modal} from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import "./index.css";
 import AuthContext from "../../../context/AuthContext";
 
 const style = {
   position: "absolute",
-  top: "25%",
-  left: "36%",
+  top: "20%",
+  left: "30%",
   width: 600,
   bgcolor: "background.paper",
   boxShadow: 24,
@@ -26,16 +26,14 @@ export default function Profile({isOpen, onClose}) {
       slotProps={{backdrop: {timeout: 500}}}>
       <Fade in={isOpen}>
         <Box sx={style}>
-
           <div className="grid grid-rows-2 grid-cols-3">
             <div className="row-span-2 col-span-1 col-sm-4 bg-c-lite-green user-profile">
               <div className="card-block text-center text-white">
                 <div className="flex justify-center">
-                  <Avatar alt={currentUser.username} src={currentUser.avatar || "user.svg"} sx={{width: 48, height: 48}}/>
-
+                  <Avatar alt={currentUser.username} src={currentUser.avatarUrl} sx={{width: '8vw', height: '8vw'}}/>
                 </div>
-                <h6 className="f-w-600 text-xl2">{currentUser.first_name} {currentUser.last_name}</h6>
-                <p className="text-xl">@{currentUser.username}</p>
+                <h6 className="f-w-600 text-xl2 text-black-30">{currentUser.first_name} {currentUser.last_name}</h6>
+                <p className="text-xl text-black-30">@{currentUser.username}</p>
                 <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
               </div>
             </div>

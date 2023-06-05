@@ -34,21 +34,24 @@ const JobsBar = () => {
   };
 
   useEffect(() => {
-    getJobs();
+    getJobs().then();
   }, []);
 
   const handleLoadMore = () => {
-    getJobs();
+    getJobs().then();
   };
+
   useEffect(() => {
   }, [data]);
+
   return (
     <div className="jobs-container ">
       {data.jobs.length && data.jobs.map((job, key) => (
         <div key={key} className="jobs-item-container grid grid-rows-2 grid-cols-3">
           <div className="job-company flex flex-col row-start-1 col-span-2">
             <span className="font-semibold">{job.company_name}</span>
-            <a href={job.url} target="_blank" className="cursor-pointer underline font-bold">  {job.title}</a>
+            <a href={job.url} target="_blank" className="cursor-pointer underline font-bold"
+               rel="noreferrer">  {job.title}</a>
           </div>
           <div className="col-start-1 row-start-2  items-center">
             Location: {job.location}
@@ -68,11 +71,14 @@ const JobsBar = () => {
           </div>
         </div>
       ))}
-      {data.loading && <p>Loading...</p>}
-      {data.error && <p>{data.error}</p>}
-      {!data.loading && !data.error && (
-        <Button onClick={handleLoadMore}>Load More</Button>
-      )}
+      <div className="w-full flex justify-center">
+        {data.loading && <p>Loading...</p>}
+        {data.error && <p>{data.error}</p>}
+        {!data.loading && !data.error && (
+          <Button onClick={handleLoadMore}>Load More</Button>
+        )}
+      </div>
+
     </div>
   );
 };

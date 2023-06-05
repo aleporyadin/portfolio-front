@@ -17,7 +17,7 @@
     transition: 1s;
     background-color: #fff;
     border-radius: 16px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
 .dashboard-container-other-cells {
@@ -44,5 +44,5 @@
     /*height: calc(100vh - 170px);*/
     background-color: #fff;
     border-radius: 16px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
