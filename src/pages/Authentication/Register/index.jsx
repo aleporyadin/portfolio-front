@@ -114,7 +114,7 @@ export default function Register() {
             </div>
           </form>
           <div className="flex items-center justify-center gap-2 mt-6">
-            <Link className="flex items-center" to={Pathname.forgotPassword}>
+            <Link className="flex items-center" to={Pathname.login}>
               <p className="text-base text-gray-40">Have account? Go Login</p>
               <ArrowForwardIcon/>
             </Link>
